@@ -1,0 +1,2 @@
+recursive-include pr_assistant *.toml
+recursive-exclude pr_assistant *.secrets.toml

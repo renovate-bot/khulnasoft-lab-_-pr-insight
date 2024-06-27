@@ -273,19 +273,19 @@ async def handle_request(body: Dict[str, Any], event: str):
         # get_logger().debug(f'Request body', artifact=body, event=event) # added inside handle_checks
         pass
     # handle comments on PRs
-    elif action == 'created':
-        get_logger().debug(f'Request body', artifact=body, event=event)
+    if action == 'created':
+        get_logger().debug('Request body', artifact=body, event=event)
         await handle_comments_on_pr(body, event, sender, sender_id, action, log_context, agent)
     # handle new PRs
     elif event == 'pull_request' and action != 'synchronize' and action != 'closed':
-        get_logger().debug(f'Request body', artifact=body, event=event)
+        get_logger().debug('Request body', artifact=body, event=event)
         await handle_new_pr_opened(body, event, sender, sender_id, action, log_context, agent)
     elif event == "issue_comment" and 'edited' in action:
         pass # handle_checkbox_clicked
     # handle pull_request event with synchronize action - "push trigger" for new commits
     elif event == 'pull_request' and action == 'synchronize':
-        # get_logger().debug(f'Request body', artifact=body, event=event) # added inside handle_push_trigger_for_new_commits
-        await handle_push_trigger_for_new_commits(body, event, sender,sender_id,  action, log_context, agent)
+        get_logger().debug('Request body', artifact=body, event=event)
+        await handle_push_trigger_for_new_commits(body, event, sender, sender_id, action, log_context, agent)
     elif event == 'pull_request' and action == 'closed':
         if get_settings().get("CONFIG.ANALYTICS_FOLDER", ""):
             handle_closed_pr(body, event, action, log_context)
@@ -332,7 +332,8 @@ async def _perform_auto_commands_github(commands_conf: str, agent: PRAssistant, 
     apply_repo_settings(api_url)
     commands = get_settings().get(f"github_app.{commands_conf}")
     if not commands:
-        get_logger().info(f"New PR, but no auto commands configured")
+        with get_logger().contextualize(**log_context):
+            get_logger().info("New PR, but no auto commands configured")
         return
     for command in commands:
         split_command = command.split(" ")

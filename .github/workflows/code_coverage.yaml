@@ -1,10 +1,9 @@
 name: Code-coverage
 
 on:
-  workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
@@ -37,18 +36,12 @@ jobs:
       - id: code_cov
         name: Test dev docker
         run: |
-          docker run --name test_container khulnasoft/pr-assistant:test  pytest  tests/unittest --cov=pr_assistant --cov-report term --cov-report xml:coverage.xml 
-          docker cp test_container:/app/coverage.xml coverage.xml
-          docker rm test_container
-
-
-      - name: Validate coverage report
-        run: |
-          if [ ! -f coverage.xml ]; then
-            echo "Coverage report not found"
-            exit 1
-          fi
+          docker run --rm khulnasoft/pr-assistant:test pytest tests/unittest --cov=pr_assistant
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
+          files: ./coverage.xml
           token: ${{ secrets.CODECOV_TOKEN }}
+          flags: unittests
+          name: code-coverage
+          fail_ci_if_error: true

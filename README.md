@@ -1,5 +1,4 @@
-
-## PR-Assistant
+# PR-Assistant
 
 [![GitHub license](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/khulnasoft/pr-assistant/blob/main/LICENSE)
 [![Static Badge](https://img.shields.io/badge/Chrome-Extension-violet)](https://chromewebstore.google.com/detail/pr-assistant-chrome-extension/ephlnjeghhogofkifjloamocljapahnl)

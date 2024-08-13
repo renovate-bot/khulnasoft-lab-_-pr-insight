@@ -1,5 +1,5 @@
 from unittest.mock import MagicMock
-from pr_action.git_providers.codecommit_client import CodeCommitClient
+from pr_insight.git_providers.codecommit_client import CodeCommitClient
 
 
 class TestCodeCommitProvider:
@@ -98,7 +98,7 @@ class TestCodeCommitProvider:
         sha_hash = "84114a356ece1e5b7637213c8e486fea7c254656"
         content = api.get_file(repo_name, file_path, sha_hash)
 
-        assert len(content) == 66
+        assert len(content) == 65
         assert content == b"boto3==1.28.25\ndynaconf==3.1.12\nreadyapi==0.99.0\nPyGithub==1.59.*\n"
         assert content.decode("utf-8") == "boto3==1.28.25\ndynaconf==3.1.12\nreadyapi==0.99.0\nPyGithub==1.59.*\n"
 

@@ -17,6 +17,15 @@ def extend_patch(original_file_str, patch_str, patch_extra_lines_before=0, patch
         except UnicodeDecodeError:
             return ""
 
+    allow_dynamic_context = get_settings().config.allow_dynamic_context
+    max_extra_lines_before_dynamic_context = get_settings().config.max_extra_lines_before_dynamic_context
+    patch_extra_lines_before_dynamic = patch_extra_lines_before
+    if allow_dynamic_context:
+        if max_extra_lines_before_dynamic_context > patch_extra_lines_before:
+            patch_extra_lines_before_dynamic = max_extra_lines_before_dynamic_context
+        else:
+            get_logger().warning(f"'max_extra_lines_before_dynamic_context' should be greater than 'patch_extra_lines_before'")
+
     original_lines = original_file_str.splitlines()
     len_original_lines = len(original_lines)
     patch_lines = patch_str.splitlines()

@@ -133,8 +133,8 @@ def process_patch_lines(patch_str, original_file_str, patch_extra_lines_before, 
                     extended_patch_lines.extend(delta_lines)  # one to zero based
                     continue
             extended_patch_lines.append(line)
-    except Exception as e:
-        get_logger().warning(f"Failed to extend patch: {e}", artifact={"traceback": traceback.format_exc()})
+    except Exception as extend_patch_error:
+        get_logger().warning(f"Failed to extend patch: {extend_patch_error}", artifact={"traceback": traceback.format_exc()})
         return patch_str
 
     # finish processing last hunk
@@ -280,7 +280,7 @@ __old hunk__
     start1, size1, start2, size2 = -1, -1, -1, -1
     prev_header_line = []
     header_line = []
-    for line_i, line in enumerate(patch_lines):
+    for line_index, line in enumerate(patch_lines):
         if 'no newline at end of file' in line.lower().strip().strip('//'):
             continue
 

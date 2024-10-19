@@ -1,5 +1,8 @@
 # PR-Insight
 
+<a aria-label="Khulnasoft logo" href="https://khulnasoft.com">
+  <img alt="" src="https://img.shields.io/badge/Made%20by%20Khulnasoft-000000.svg?style=flat-square&logo=Khulnasoft&labelColor=000">
+</a>
 [![GitHub license](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/khulnasoft/pr-insight/blob/main/LICENSE)
 [![Static Badge](https://img.shields.io/badge/Chrome-Extension-violet)](https://chromewebstore.google.com/detail/pr-insight-chrome-extension/ephlnjeghhogofkifjloamocljapahnl)
 [![Static Badge](https://img.shields.io/badge/Code-Benchmark-blue)](https://khulnasoft.github.io/pr-insight/finetuning_benchmark/)
@@ -221,8 +224,6 @@ https://openai.com/enterprise-privacy
 - The [PR-Insight Chrome extension](https://chromewebstore.google.com/detail/pr-insight-chrome-extension/ephlnjeghhogofkifjloamocljapahnl) serves solely to modify the visual appearance of a GitHub PR screen. It does not transmit any user's repo or pull request code. Code is only sent for processing when a user submits a GitHub comment that activates a PR-Insight tool, in accordance with the standard privacy policy of PR-Insight.
 
 ## Links
-
-[![Join our Discord community](https://raw.githubusercontent.com/KhulnaSoft/khulnasoft-vscode-release/main/media/docs/Joincommunity.png)](https://discord.gg/kG35uSHDBc)
 
 - Discord community: https://discord.gg/NfDj6xsR
 - KhulnaSoft site: https://khulnasoft.com

@@ -1,17 +1,13 @@
 # PR-Insight
 
-<a aria-label="Khulnasoft logo" href="https://khulnasoft.com">
-  <img alt="" src="https://img.shields.io/badge/Made%20by%20Khulnasoft-000000.svg?style=flat-square&logo=Khulnasoft&labelColor=000">
-</a>
+[![Made by Khulnasoft](https://img.shields.io/badge/Made%20by%20Khulnasoft-000000.svg?style=flat-square&logo=Khulnasoft&labelColor=000)](https://khulnasoft.com)
 [![GitHub license](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/khulnasoft/pr-insight/blob/main/LICENSE)
-[![Static Badge](https://img.shields.io/badge/Chrome-Extension-violet)](https://chromewebstore.google.com/detail/pr-insight-chrome-extension/ephlnjeghhogofkifjloamocljapahnl)
-[![Static Badge](https://img.shields.io/badge/Code-Benchmark-blue)](https://khulnasoft.github.io/pr-insight/finetuning_benchmark/)
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-violet)](https://chromewebstore.google.com/detail/pr-insight-chrome-extension/ephlnjeghhogofkifjloamocljapahnl)
+[![Code Benchmark](https://img.shields.io/badge/Code-Benchmark-blue)](https://khulnasoft.github.io/pr-insight/finetuning_benchmark/)
 [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label&color=purple)](https://discord.gg/NfDj6xsR)
-[![Twitter](https://img.shields.io/twitter/follow/khulnasoft)](https://twitter.com/khulnasoft)
-    <a href="https://github.com/khulnasoft/pr-insight/commits/main">
-    <img alt="GitHub" src="https://img.shields.io/github/last-commit/khulnasoft/pr-insight/main?style=for-the-badge" height="20">
-    </a>
-</div>
+[![Twitter Follow](https://img.shields.io/twitter/follow/khulnasoft)](https://twitter.com/khulnasoft)
+[![GitHub last commit](https://img.shields.io/github/last-commit/khulnasoft/pr-insight/main?style=for-the-badge)](https://github.com/khulnasoft/pr-insight/commits/main)
+[![CI status](https://img.shields.io/github/actions/workflow/status/khulnasoft/pr-insight/build-and-test.yaml?event=push&branch=main&style=flat-square&labelColor=000000](https://github.com/khulnasoft/pr-insight/actions/workflows/build-and-test.yaml?query=event%3Apush+branch%3Amain))
 
 ### [Documentation](https://khulnasoft.github.io/pr-insight/)
 - See the [Installation Guide](https://khulnasoft.github.io/pr-insight/installation/) for instructions on installing PR-Insight on different platforms.

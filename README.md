@@ -7,7 +7,8 @@
 [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label&color=purple)](https://discord.gg/NfDj6xsR)
 [![Twitter Follow](https://img.shields.io/twitter/follow/khulnasoft)](https://twitter.com/khulnasoft)
 [![GitHub last commit](https://img.shields.io/github/last-commit/khulnasoft/pr-insight/main?style=for-the-badge)](https://github.com/khulnasoft/pr-insight/commits/main)
-[![CI status](https://img.shields.io/github/actions/workflow/status/khulnasoft/pr-insight/build-and-test.yaml?event=push&branch=main&style=flat-square&labelColor=000000](https://github.com/khulnasoft/pr-insight/actions/workflows/build-and-test.yaml?query=event%3Apush+branch%3Amain))
+[![CI status](https://img.shields.io/github/actions/workflow/status/khulnasoft/pr-insight/build-and-test.yaml?event=push&branch=main&style=flat-square&labelColor=000000)](https://github.com/khulnasoft/pr-insight/actions/workflows/build-and-test.yaml?query=event%3Apush+branch%3Amain)
+
 
 ### [Documentation](https://khulnasoft.github.io/pr-insight/)
 - See the [Installation Guide](https://khulnasoft.github.io/pr-insight/installation/) for instructions on installing PR-Insight on different platforms.

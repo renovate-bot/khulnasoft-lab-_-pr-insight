@@ -67,6 +67,33 @@ In post-process, PR-Insight counts the number of suggestions that were implement
 
 ![code_suggestions_asses_impact_stats_2](https://khulnasoft.com/images/pr_insight/code_suggestions_asses_impact_stats_2.png){width=512}
 
+## Suggestion tracking 💎
+`Platforms supported: GitHub, GitLab`
+
+Khulnasoft Merge employs an novel detection system to automatically [identify](https://khulnasoft-merge-docs.khulnasoft.com/core-abilities/impact_evaluation/) AI code suggestions that PR authors have accepted and implemented.
+
+Accepted suggestions are also automatically documented in a dedicated wiki page called `.pr_insight_accepted_suggestions`, allowing users to track historical changes, assess the tool's effectiveness, and learn from previously implemented recommendations in the repository.
+An example [result](https://github.com/KhulnaSoft/pr-insight/wiki/.pr_insight_accepted_suggestions):
+
+[![pr_insight_accepted_suggestions1.png](https://khulnasoft.com/images/pr_insight/pr_insight_accepted_suggestions1.png){width=768}](https://github.com/KhulnaSoft/pr-insight/wiki/.pr_insight_accepted_suggestions)
+
+This dedicated wiki page will also serve as a foundation for future AI model improvements, allowing it to learn from historically implemented suggestions and generate more targeted, contextually relevant recommendations.
+
+This feature is controlled by a boolean configuration parameter: `pr_code_suggestions.wiki_page_accepted_suggestions` (default is true).
+
+!!! note "Wiki must be enabled"
+    While the aggregation process is automatic, GitHub repositories require a one-time manual wiki setup.
+
+    To initialize the wiki: navigate to `Wiki`, select `Create the first page`, then click `Save page`. 
+
+    ![pr_insight_accepted_suggestions_create_first_page.png](https://khulnasoft.com/images/pr_insight/pr_insight_accepted_suggestions_create_first_page.png){width=768}
+
+    Once a wiki repo is created, the tool will automatically use this wiki for tracking suggestions.
+
+!!! note "Why a wiki page?"
+    Your code belongs to you, and we respect your privacy. Hence, we won't store any code suggestions in an external database. 
+
+    Instead, we leverage a dedicated private page, within your repository wiki, to track suggestions. This approach offers convenient secure suggestion tracking while avoiding pull requests or any noise to the main repository.
 
 ## Usage Tips
 

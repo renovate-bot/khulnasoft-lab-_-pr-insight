@@ -1,7 +1,7 @@
 ## Overview
 The `improve` tool scans the PR code changes, and automatically generates [meaningful](https://github.com/Khulnasoft/pr-insight/blob/main/pr_insight/settings/pr_code_suggestions_prompts.toml#L41) suggestions for improving the PR code.
 The tool can be triggered automatically every time a new PR is [opened](../usage-guide/automations_and_usage.md#github-app-automatic-tools-when-a-new-pr-is-opened), or it can be invoked manually by commenting on any PR:
-```
+```toml
 /improve
 ```
 
@@ -19,12 +19,12 @@ Note that the `Apply this suggestion` checkbox, which interactively converts a s
 Invoke the tool manually by commenting `/improve` on any PR. The code suggestions by default are presented as a single comment:
 
 To edit [configurations](#configuration-options) related to the improve tool, use the following template:
-```
+```toml
 /improve --pr_code_suggestions.some_config1=... --pr_code_suggestions.some_config2=...
 ```
 
 For example, you can choose to present all the suggestions as commitable code comments, by running the following command:
-```
+```toml
 /improve --pr_code_suggestions.commitable_code_suggestions=true
 ```
 
@@ -37,7 +37,7 @@ Also note that collapsible are not supported in _Bitbucket_. Hence, the suggesti
 ### Automatic triggering
 
 To run the `improve` automatically when a PR is opened, define in a [configuration file](https://pr-insight-docs.khulnasoft.com/usage-guide/configuration_options/#wiki-configuration-file):
-```
+```toml
 [github_app]
 pr_commands = [
     "/improve",
@@ -70,12 +70,12 @@ In post-process, PR-Insight counts the number of suggestions that were implement
 ## Suggestion tracking 💎
 `Platforms supported: GitHub, GitLab`
 
-Khulnasoft Merge employs an novel detection system to automatically [identify](https://khulnasoft-merge-docs.khulnasoft.com/core-abilities/impact_evaluation/) AI code suggestions that PR authors have accepted and implemented.
+PR-Insight employs an novel detection system to automatically [identify](https://pr-insight-docs.khulnasoft.com/core-abilities/impact_evaluation/) AI code suggestions that PR authors have accepted and implemented.
 
 Accepted suggestions are also automatically documented in a dedicated wiki page called `.pr_insight_accepted_suggestions`, allowing users to track historical changes, assess the tool's effectiveness, and learn from previously implemented recommendations in the repository.
-An example [result](https://github.com/KhulnaSoft/pr-insight/wiki/.pr_insight_accepted_suggestions):
+An example [result](https://github.com/Khulnasoft/pr-insight/wiki/.pr_insight_accepted_suggestions):
 
-[![pr_insight_accepted_suggestions1.png](https://khulnasoft.com/images/pr_insight/pr_insight_accepted_suggestions1.png){width=768}](https://github.com/KhulnaSoft/pr-insight/wiki/.pr_insight_accepted_suggestions)
+[![pr_insight_accepted_suggestions1.png](https://khulnasoft.com/images/pr_insight/pr_insight_accepted_suggestions1.png){width=768}](https://github.com/Khulnasoft/pr-insight/wiki/.pr_insight_accepted_suggestions)
 
 This dedicated wiki page will also serve as a foundation for future AI model improvements, allowing it to learn from historically implemented suggestions and generate more targeted, contextually relevant recommendations.
 
@@ -83,7 +83,7 @@ This feature is controlled by a boolean configuration parameter: `pr_code_sugges
 
 !!! note "Wiki must be enabled"
     While the aggregation process is automatic, GitHub repositories require a one-time manual wiki setup.
-
+    
     To initialize the wiki: navigate to `Wiki`, select `Create the first page`, then click `Save page`. 
 
     ![pr_insight_accepted_suggestions_create_first_page.png](https://khulnasoft.com/images/pr_insight/pr_insight_accepted_suggestions_create_first_page.png){width=768}
@@ -97,15 +97,43 @@ This feature is controlled by a boolean configuration parameter: `pr_code_sugges
 
 ## Usage Tips
 
+### Implementing the proposed code suggestions
+Each generated suggestion consists of three key elements:
+
+1. A single-line summary of the proposed change
+2. An expandable section containing a comprehensive description of the suggestion
+3. A diff snippet showing the recommended code modification (before and after)
+
+We advise users to apply critical analysis and judgment when implementing the proposed suggestions.
+In addition to mistakes (which may happen, but are rare), sometimes the presented code modification may serve more as an _illustrative example_ than a direct applicable solution.
+In such cases, we recommend prioritizing the suggestion's detailed description, using the diff snippet primarily as a supporting reference.
+
+### Dual publishing mode
+Our recommended approach for presenting code suggestions is through a [table](https://pr-insight-docs.khulnasoft.com/tools/improve/#overview) (`--pr_code_suggestions.commitable_code_suggestions=false`). 
+This method significantly reduces the PR footprint and allows for quick and easy digestion of multiple suggestions.
+
+We also offer a complementary **dual publishing mode**. When enabled, suggestions exceeding a certain score threshold are not only displayed in the table, but also presented as commitable PR comments. 
+This mode helps highlight suggestions deemed more critical.
+
+To activate dual publishing mode, use the following setting:
+
+```toml
+[pr_code_suggestions]
+dual_publishing_score_threshold = x
+```
+
+Where x represents the minimum score threshold (>=) for suggestions to be presented as commitable PR comments in addition to the table. Default is -1 (disabled).
+
 ### Self-review
 If you set in a configuration file:
-```
+```toml
 [pr_code_suggestions]
 demand_code_suggestions_self_review = true
 ```
+
 The `improve` tool will add a checkbox below the suggestions, prompting user to acknowledge that they have reviewed the suggestions.
 You can set the content of the checkbox text via:
-```
+```toml
 [pr_code_suggestions]
 code_suggestions_self_review_text = "... (your text here) ..."
 ```
@@ -113,12 +141,19 @@ code_suggestions_self_review_text = "... (your text here) ..."
 ![self_review_1](https://khulnasoft.com/images/pr_insight/self_review_1.png){width=512}
 
 
+!!! tip "Tip - Reducing visual footprint after self-review 💎"
+
+    The configuration parameter `pr_code_suggestions.fold_suggestions_on_self_review` (default is True)
+    can be used to automatically fold the suggestions after the user clicks the self-review checkbox.
+
+    This reduces the visual footprint of the suggestions, and also indicates to the PR reviewer that the suggestions have been reviewed by the PR author, and don't require further attention.
 
 
-!!! tip "Tip - demanding self-review from the PR author 💎"
+
+!!! tip "Tip - Demanding self-review from the PR author 💎"
 
     By setting:
-    ```
+    ```toml
     [pr_code_suggestions]
     approve_pr_on_self_review = true
     ```
@@ -166,7 +201,7 @@ You can use the `extra_instructions` configuration option to give the AI model a
 Be specific, clear, and concise in the instructions. With extra instructions, you are the prompter. Specify relevant aspects that you want the model to focus on.
     
 Examples for possible instructions:
-```
+```toml
 [pr_code_suggestions]
 extra_instructions="""\
 (1) Answer in japanese
@@ -203,7 +238,7 @@ By default, PR-Insight will look for a local `best_practices.md` wiki file in th
 
 If you want to enable also a global `best_practices.md` wiki file, set first in the global configuration file:
 
-```
+```toml
 [best_practices]
 enable_global_best_practices = true
 ```
@@ -237,6 +272,10 @@ Using a combination of both can help the AI model to provide relevant and tailor
         <td>If set to true, the tool will display the suggestions as commitable code comments. Default is false.</td>
       </tr>
       <tr>
+        <td><b>dual_publishing_score_threshold</b></td>
+        <td>Minimum score threshold for suggestions to be presented as commitable PR comments in addition to the table. Default is -1 (disabled).</td>
+      </tr>
+      <tr>
         <td><b>persistent_comment</b></td>
         <td>If set to true, the improve comment will be persistent, meaning that every new improve request will edit the previous one. Default is false.</td>
       </tr>
@@ -259,6 +298,10 @@ Using a combination of both can help the AI model to provide relevant and tailor
       <tr>
         <td><b>enable_chat_text</b></td>
         <td>If set to true, the tool will display a reference to the PR chat in the comment. Default is true.</td>
+      </tr>
+      <tr>
+        <td><b>wiki_page_accepted_suggestions</b></td>
+        <td>If set to true, the tool will automatically track accepted suggestions in a dedicated wiki page called `.pr_insight_accepted_suggestions`. Default is true.</td>
       </tr>
     </table>
 

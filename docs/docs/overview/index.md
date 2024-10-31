@@ -1,6 +1,6 @@
 # Overview
 
-KhulnaSoft PR-Insight is an open-source tool to help efficiently review and handle pull requests.
+PR-Insight is an open-source tool to help efficiently review and handle pull requests.
 
 - See the [Installation Guide](./installation/index.md) for instructions on installing and running the tool on different git platforms.
 

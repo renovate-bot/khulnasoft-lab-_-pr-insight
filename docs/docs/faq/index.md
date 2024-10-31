@@ -61,7 +61,7 @@ ___
 
     When you self-host, you use your own keys. 
 
-    PR-Insight Pro with SaaS deployment is a hosted version of PR-Insight, where KhulnaSoft AI manages the infrastructure and the keys.
+    PR-Insight Pro with SaaS deployment is a hosted version of PR-Insight, where Khulnasoft manages the infrastructure and the keys.
     For enterprise customers, on-prem deployment is also available. [Contact us](https://www.khulnasoft.com/contact/#pricing) for more information.
 
 ___

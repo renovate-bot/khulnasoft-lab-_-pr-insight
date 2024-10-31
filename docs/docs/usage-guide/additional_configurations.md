@@ -1,5 +1,5 @@
 ## Show possible configurations
-The possible configurations of pr-insight are stored in [here](https://github.com/Khulnasoft/pr-insight/blob/main/pr_insight/settings/configuration.toml).
+The possible configurations of PR-Insight are stored in [here](https://github.com/Khulnasoft/pr-insight/blob/main/pr_insight/settings/configuration.toml).
 In the [tools](https://pr-insight-docs.khulnasoft.com/tools/) page you can find explanations on how to use these configurations for each tool.
 
 To print all the available configurations as a comment on your PR, you can use the following command:
@@ -22,7 +22,7 @@ Will output an additional field showing the actual configurations used for the `
 
 ## Ignoring files from analysis
 
-In some cases, you may want to exclude specific files or directories from the analysis performed by KhulnaSoft PR-Insight. This can be useful, for example, when you have files that are generated automatically or files that shouldn't be reviewed, like vendor code.
+In some cases, you may want to exclude specific files or directories from the analysis performed by PR-Insight. This can be useful, for example, when you have files that are generated automatically or files that shouldn't be reviewed, like vendor code.
 
 You can ignore files or folders using the following methods:
  - `IGNORE.GLOB`
@@ -64,8 +64,8 @@ This mode provides a very good speed-quality-cost tradeoff, and can handle most 
 When the PR is above the token limit, it employs a [PR Compression strategy](../core-abilities/index.md).
 
 However, for very large PRs, or in case you want to emphasize quality over speed and cost, there are two possible solutions:
-1) [Use a model](https://khulnasoft.github.io/Docs-PR-Insight/usage-guide/#changing-a-model) with larger context, like GPT-32K, or claude-100K. This solution will be applicable for all the tools.
-2) For the `/improve` tool, there is an ['extended' mode](https://khulnasoft.github.io/Docs-PR-Insight/tools/#improve) (`/improve --extended`),
+1) [Use a model](https://pr-insight-docs.khulnasoft.com/usage-guide/changing_a_model/) with larger context, like GPT-32K, or claude-100K. This solution will be applicable for all the tools.
+2) For the `/improve` tool, there is an ['extended' mode](https://pr-insight-docs.khulnasoft.com/tools/improve/) (`/improve --extended`),
 which divides the PR into chunks, and processes each chunk separately. With this mode, regardless of the model, no compression will be done (but for large PRs, multiple model calls may occur)
 
 

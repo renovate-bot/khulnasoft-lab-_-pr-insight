@@ -1,6 +1,6 @@
 ### Overview
 
-[PR-Insight Pro](https://www.khulnasoft.com/pricing/) is a hosted version of PR-Insight, provided by KhulnaSoft. A complimentary two-week trial is offered, followed by a monthly subscription fee.
+[PR-Insight Pro](https://www.khulnasoft.com/pricing/) is a hosted version of PR-Insight, provided by Khulnasoft. A complimentary two-week trial is offered, followed by a monthly subscription fee.
 PR-Insight Pro is designed for companies and teams that require additional features and capabilities. It provides the following benefits:
 
 1. **Fully managed** - We take care of everything for you - hosting, models, regular updates, and more. Installation is as simple as signing up and adding the PR-Insight app to your GitHub\GitLab\BitBucket repo.
@@ -19,14 +19,14 @@ Here are some of the additional features and capabilities that PR-Insight Pro of
 
 | Feature                                                                                                              | Description                                                                                                                                                      |
 |----------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**Model selection**](https://pr-insight-docs.khulnasoft.com/usage-guide/PR_insight_pro_models/#pr-insight-pro-models)          | Choose the model that best fits your needs, among top models like `GPT4` and `Claude-Sonnet-3.5`                                                                 
-| [**Global and wiki configuration**](https://pr-insight-docs.khulnasoft.com/usage-guide/configuration_options/)              | Control configurations for many repositories from a single location; <br>Edit configuration of a single repo without commiting code                              |
-| [**Apply suggestions**](https://pr-insight-docs.khulnasoft.com/tools/improve/#overview)                                     | Generate commitable code from the relevant suggestions interactively by clicking on a checkbox                                                                   |
+| [**Model selection**](https://pr-insight-docs.khulnasoft.com/usage-guide/PR_insight_pro_models/)          | Choose the model that best fits your needs, among top models like `GPT4` and `Claude-Sonnet-3.5`                                                                 
+| [**Global and wiki configuration**](https://pr-insight-docs.khulnasoft.com/usage-guide/configuration_options/)              | Control configurations for many repositories from a single location; <br>Edit configuration of a single repo without committing code                              |
+| [**Apply suggestions**](https://pr-insight-docs.khulnasoft.com/tools/improve/#overview)                                     | Generate committable code from the relevant suggestions interactively by clicking on a checkbox                                                                   |
 | [**Suggestions impact**](https://pr-insight-docs.khulnasoft.com/tools/improve/#assessing-impact)                         | Automatically mark suggestions that were implemented by the user (either directly in GitHub, or indirectly in the IDE) to enable tracking of the impact of the suggestions |
 | [**CI feedback**](https://pr-insight-docs.khulnasoft.com/tools/ci_feedback/) | Automatically analyze failed CI checks on GitHub and provide actionable feedback in the PR conversation, helping to resolve issues quickly |
 | [**Advanced usage statistics**](https://www.khulnasoft.com/contact/#/)                                                    | PR-Insight Pro offers detailed statistics at user, repository, and company levels, including metrics about PR-Insight usage, and also general statistics and insights |
 | [**Incorporating companies' best practices**](https://pr-insight-docs.khulnasoft.com/tools/improve/#best-practices)         | Use the companies' best practices as reference to increase the effectiveness and the relevance of the code suggestions                                           |
-| [**Interactive triggering**](https://pr-insight-docs.khulnasoft.com/tools/analyze/#example-usage)                           | Interactively apply different tools via the `analyze` command                                                                                                    |                                                             
+| [**Interactive triggering**](https://pr-insight-docs.khulnasoft.com/tools/analyze/#example-usage)                           | Interactively apply different tools via the `analyze` command                                                                                                    |
 | [**Custom labels**](https://pr-insight-docs.khulnasoft.com/tools/describe/#handle-custom-labels-from-the-repos-labels-page) | Define custom labels for PR-Insight to assign to the PR                                                                                                            |
 
 ### Additional tools

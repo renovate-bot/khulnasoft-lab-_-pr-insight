@@ -2,12 +2,12 @@
 ## Getting Started with PR-Insight Pro
 
 PR-Insight Pro is a versatile application compatible with GitHub, GitLab, and BitBucket, hosted by KhulnaSoft.
-See [here](https://pr-insight-docs.khulnasoft.com/#pr-insight-pro) for more details about the benefits of using PR-Insight Pro.
+See [here](https://pr-insight-docs.khulnasoft.com/overview/pr_insight_pro/) for more details about the benefits of using PR-Insight Pro.
 
 Interested parties can subscribe to PR-Insight Pro through the following [link](https://www.khulnasoft.com/pricing/). 
 After subscribing, you are granted the ability to easily install the application across any of your repositories.
 
-![PR Insight Pro](https://khulnasoft.com/images/pr_insight/pr_insight_pro_install.png){width=468}
+![PR-Insight Pro](https://khulnasoft.com/images/pr_insight/pr_insight_pro_install.png){width=468}
 
 Each user who wants to use PR-Insight pro needs to buy a seat. 
 Initially, KhulnaSoft offers a two-week trial period at no cost, after which continued access requires each user to secure a personal seat.
@@ -18,7 +18,7 @@ Beyond this limit, PR-Insight Pro will cease to respond to their inquiries unles
 
 ## Install PR-Insight Pro for GitHub Enterprise Server
 
-To use Qodo Merge Pro application on your private GitHub Enterprise Server, you will need to contact us for starting an [Enterprise](https://www.khulnasoft.com/pricing/) trial.
+To use PR-Insight Pro application on your private GitHub Enterprise Server, you will need to contact us for starting an [Enterprise](https://www.khulnasoft.com/pricing/) trial.
 
 
 ## Install PR-Insight Pro for GitLab (Teams & Enterprise)

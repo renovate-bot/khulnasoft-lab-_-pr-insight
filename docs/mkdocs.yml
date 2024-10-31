@@ -1,4 +1,4 @@
-site_name: PR-Insight Documentation
+site_name: PR-Insight (formerly known as PR-Insight)
 repo_url: https://github.com/Khulnasoft/pr-insight
 repo_name: Khulnasoft/pr-insight
 
@@ -115,7 +115,7 @@ extra:
     - icon: fontawesome/brands/discord
       link: https://discord.com/invite/SgSxuQ65GF
     - icon: fontawesome/brands/youtube
-      link: https://www.youtube.com/@KhulnaSoft
+      link: https://www.youtube.com/@KhulnaSoft-AI
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/khulnasoft
     - icon: fontawesome/brands/twitter

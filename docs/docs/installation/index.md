@@ -1,7 +1,7 @@
 # Installation
 
 ## Self-hosted PR-Insight
-If you choose to host you own PR-Insight, you first need to acquire two tokens:
+If you choose to host your own PR-Insight, you first need to acquire two tokens:
 
 1. An OpenAI key from [here](https://platform.openai.com/api-keys), with access to GPT-4 (or a key for other [language models](https://pr-insight-docs.khulnasoft.com/usage-guide/changing_a_model/), if you prefer).
 2. A GitHub\GitLab\BitBucket personal access token (classic), with the repo scope. [GitHub from [here](https://github.com/settings/tokens)]

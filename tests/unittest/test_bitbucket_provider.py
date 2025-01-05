@@ -1,8 +1,10 @@
+from unittest.mock import MagicMock
+
+from atlassian.bitbucket import Bitbucket
+
+from pr_insight.algo.types import EDIT_TYPE, FilePatchInfo
 from pr_insight.git_providers import BitbucketServerProvider
 from pr_insight.git_providers.bitbucket_provider import BitbucketProvider
-from unittest.mock import MagicMock
-from atlassian.bitbucket import Bitbucket
-from pr_insight.algo.types import EDIT_TYPE, FilePatchInfo
 
 
 class TestBitbucketProvider:
@@ -19,6 +21,13 @@ class TestBitbucketServerProvider:
         url = "https://git.onpreminstance.com/projects/AAA/repos/my-repo/pull-requests/1"
         workspace_slug, repo_slug, pr_number = BitbucketServerProvider._parse_pr_url(url)
         assert workspace_slug == "AAA"
+        assert repo_slug == "my-repo"
+        assert pr_number == 1
+
+    def test_parse_pr_url_with_users(self):
+        url = "https://bitbucket.company-server.url/users/username/repos/my-repo/pull-requests/1"
+        workspace_slug, repo_slug, pr_number = BitbucketServerProvider._parse_pr_url(url)
+        assert workspace_slug == "~username"
         assert repo_slug == "my-repo"
         assert pr_number == 1
 
@@ -121,7 +130,7 @@ class TestBitbucketServerProvider:
     NOT between the HEAD of main and the HEAD of branch b
 
           - o - o - o  branch b
-         /     /  
+         /     /
     o - o -- o - o     main
              ^ node c
     '''
@@ -183,7 +192,7 @@ class TestBitbucketServerProvider:
             ---- o - o branch c
            /    /
           ---- o       branch b
-         /    /  
+         /    /
         o - o - o      main
             ^ node d
     '''
@@ -242,7 +251,7 @@ class TestBitbucketServerProvider:
             FilePatchInfo(
                 'file\nwith\nmultiple\nlines\nto\nemulate\na\nreal\nfile',
                 'readme\nwithout\nsome\nlines\nto\nsimulate\na\nreal\nfile',
-                '--- \n+++ \n@@ -1,9 +1,9 @@\n-file\n-with\n-multiple\n+readme\n+without\n+some\n lines\n to\n-emulate\n+simulate\n a\n real\n file',
+                '--- \n+++ \n@@ -1,9 +1,9 @@\n-file\n-with\n-multiple\n+readme\n+without\n+some\n lines\n to\n-emulate\n+simulate\n a\n real\n file\n',
                 'Readme.md',
                 edit_type=EDIT_TYPE.MODIFIED,
             )
@@ -264,7 +273,7 @@ class TestBitbucketServerProvider:
             FilePatchInfo(
                 'file\nwith\nsome\nlines\nto\nemulate\na\nreal\nfile',
                 'readme\nwithout\nsome\nlines\nto\nsimulate\na\nreal\nfile',
-                '--- \n+++ \n@@ -1,9 +1,9 @@\n-file\n-with\n+readme\n+without\n some\n lines\n to\n-emulate\n+simulate\n a\n real\n file',
+                '--- \n+++ \n@@ -1,9 +1,9 @@\n-file\n-with\n+readme\n+without\n some\n lines\n to\n-emulate\n+simulate\n a\n real\n file\n',
                 'Readme.md',
                 edit_type=EDIT_TYPE.MODIFIED,
             )
@@ -286,7 +295,7 @@ class TestBitbucketServerProvider:
             FilePatchInfo(
                 'file\nwith\nsome\nlines\nto\nemulate\na\nreal\nfile',
                 'readme\nwithout\nsome\nlines\nto\nsimulate\na\nreal\nfile',
-                '--- \n+++ \n@@ -1,9 +1,9 @@\n-file\n-with\n+readme\n+without\n some\n lines\n to\n-emulate\n+simulate\n a\n real\n file',
+                '--- \n+++ \n@@ -1,9 +1,9 @@\n-file\n-with\n+readme\n+without\n some\n lines\n to\n-emulate\n+simulate\n a\n real\n file\n',
                 'Readme.md',
                 edit_type=EDIT_TYPE.MODIFIED,
             )

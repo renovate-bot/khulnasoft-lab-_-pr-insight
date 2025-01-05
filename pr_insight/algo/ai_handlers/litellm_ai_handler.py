@@ -1,11 +1,13 @@
 import os
-import requests
+
 import litellm
 import openai
+import requests
 from litellm import acompletion
 from tenacity import retry, retry_if_exception_type, stop_after_attempt
 
 from pr_insight.algo.ai_handlers.base_ai_handler import BaseAiHandler
+from pr_insight.algo.utils import get_version
 from pr_insight.config_loader import get_settings
 from pr_insight.log import get_logger
 
@@ -131,7 +133,7 @@ class LiteLLMAIHandler(BaseAiHandler):
         if "langfuse" in callbacks:
             metadata.update({
                 "trace_name": command,
-                "tags": [git_provider, command],
+                "tags": [git_provider, command, f'version:{get_version()}'],
                 "trace_metadata": {
                     "command": command,
                     "pr_url": pr_url,
@@ -140,7 +142,7 @@ class LiteLLMAIHandler(BaseAiHandler):
         if "langsmith" in callbacks:
             metadata.update({
                 "run_name": command,
-                "tags": [git_provider, command],
+                "tags": [git_provider, command, f'version:{get_version()}'],
                 "extra": {
                     "metadata": {
                         "command": command,
@@ -191,8 +193,8 @@ class LiteLLMAIHandler(BaseAiHandler):
                 messages[1]["content"] = [{"type": "text", "text": messages[1]["content"]},
                                           {"type": "image_url", "image_url": {"url": img_path}}]
 
-            # Currently O1 does not support separate system and user prompts
-            O1_MODEL_PREFIX = 'o1-'
+            # Currently, model OpenAI o1 series does not support a separate system and user prompts
+            O1_MODEL_PREFIX = 'o1'
             model_type = model.split('/')[-1] if '/' in model else model
             if model_type.startswith(O1_MODEL_PREFIX):
                 user = f"{system}\n\n\n{user}"

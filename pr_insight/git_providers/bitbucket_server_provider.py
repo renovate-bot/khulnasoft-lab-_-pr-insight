@@ -1,8 +1,10 @@
-from packaging.version import parse as parse_version
+import difflib
+import re
 from typing import Optional, Tuple
 from urllib.parse import quote_plus, urlparse
 
 from atlassian.bitbucket import Bitbucket
+from packaging.version import parse as parse_version
 from requests.exceptions import HTTPError
 
 from ..algo.git_patch_processing import decode_if_bytes
@@ -67,24 +69,37 @@ class BitbucketServerProvider(GitProvider):
         post_parameters_list = []
         for suggestion in code_suggestions:
             body = suggestion["body"]
+            original_suggestion = suggestion.get('original_suggestion', None)  # needed for diff code
+            if original_suggestion:
+                try:
+                    existing_code = original_suggestion['existing_code'].rstrip() + "\n"
+                    improved_code = original_suggestion['improved_code'].rstrip() + "\n"
+                    diff = difflib.unified_diff(existing_code.split('\n'),
+                                                improved_code.split('\n'), n=999)
+                    patch_orig = "\n".join(diff)
+                    patch = "\n".join(patch_orig.splitlines()[5:]).strip('\n')
+                    diff_code = f"\n\n```diff\n{patch.rstrip()}\n```"
+                    # replace ```suggestion ... ``` with diff_code, using regex:
+                    body = re.sub(r'```suggestion.*?```', diff_code, body, flags=re.DOTALL)
+                except Exception as e:
+                    get_logger().exception(f"Bitbucket failed to get diff code for publishing, error: {e}")
+                    continue
             relevant_file = suggestion["relevant_file"]
             relevant_lines_start = suggestion["relevant_lines_start"]
             relevant_lines_end = suggestion["relevant_lines_end"]
 
             if not relevant_lines_start or relevant_lines_start == -1:
-                if get_settings().config.verbosity_level >= 2:
-                    get_logger().exception(
-                        f"Failed to publish code suggestion, relevant_lines_start is {relevant_lines_start}"
-                    )
+                get_logger().warning(
+                    f"Failed to publish code suggestion, relevant_lines_start is {relevant_lines_start}"
+                )
                 continue
 
             if relevant_lines_end < relevant_lines_start:
-                if get_settings().config.verbosity_level >= 2:
-                    get_logger().exception(
-                        f"Failed to publish code suggestion, "
-                        f"relevant_lines_end is {relevant_lines_end} and "
-                        f"relevant_lines_start is {relevant_lines_start}"
-                    )
+                get_logger().warning(
+                    f"Failed to publish code suggestion, "
+                    f"relevant_lines_end is {relevant_lines_end} and "
+                    f"relevant_lines_start is {relevant_lines_start}"
+                )
                 continue
 
             if relevant_lines_end > relevant_lines_start:
@@ -386,10 +401,21 @@ class BitbucketServerProvider(GitProvider):
 
         try:
             projects_index = path_parts.index("projects")
-        except ValueError as e:
+        except ValueError:
+            projects_index = -1
+
+        try:
+            users_index = path_parts.index("users")
+        except ValueError:
+            users_index = -1
+
+        if projects_index == -1 and users_index == -1:
             raise ValueError(f"The provided URL '{pr_url}' does not appear to be a Bitbucket PR URL")
 
-        path_parts = path_parts[projects_index:]
+        if projects_index != -1:
+            path_parts = path_parts[projects_index:]
+        else:
+            path_parts = path_parts[users_index:]
 
         if len(path_parts) < 6 or path_parts[2] != "repos" or path_parts[4] != "pull-requests":
             raise ValueError(
@@ -397,6 +423,8 @@ class BitbucketServerProvider(GitProvider):
             )
 
         workspace_slug = path_parts[1]
+        if users_index != -1:
+            workspace_slug = f"~{workspace_slug}"
         repo_slug = path_parts[3]
         try:
             pr_number = int(path_parts[5])

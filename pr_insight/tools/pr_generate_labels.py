@@ -7,9 +7,10 @@ from jinja2 import Environment, StrictUndefined
 
 from pr_insight.algo.ai_handlers.base_ai_handler import BaseAiHandler
 from pr_insight.algo.ai_handlers.litellm_ai_handler import LiteLLMAIHandler
-from pr_insight.algo.pr_processing import get_pr_diff, retry_with_fallback_models
+from pr_insight.algo.pr_processing import (get_pr_diff,
+                                           retry_with_fallback_models)
 from pr_insight.algo.token_handler import TokenHandler
-from pr_insight.algo.utils import load_yaml, set_custom_labels, get_user_labels
+from pr_insight.algo.utils import get_user_labels, load_yaml, set_custom_labels
 from pr_insight.config_loader import get_settings
 from pr_insight.git_providers import get_git_provider
 from pr_insight.git_providers.git_provider import get_main_pr_language
@@ -57,7 +58,7 @@ class PRGenerateLabels:
             get_settings().pr_custom_labels_prompt.system,
             get_settings().pr_custom_labels_prompt.user,
         )
-    
+
         # Initialize patches_diff and prediction attributes
         self.patches_diff = None
         self.prediction = None
@@ -98,7 +99,7 @@ class PRGenerateLabels:
                 self.git_provider.remove_initial_comment()
         except Exception as e:
             get_logger().error(f"Error generating PR labels {self.pr_id}: {e}")
-        
+
         return ""
 
     async def _prepare_prediction(self, model: str) -> None:

@@ -5,14 +5,16 @@ from typing import Callable, List, Tuple
 
 from github import RateLimitExceededException
 
-from pr_insight.algo.git_patch_processing import convert_to_hunks_with_lines_numbers, extend_patch, handle_patch_deletions
-from pr_insight.algo.language_handler import sort_files_by_main_languages
 from pr_insight.algo.file_filter import filter_ignored
+from pr_insight.algo.git_patch_processing import (
+    convert_to_hunks_with_lines_numbers, extend_patch, handle_patch_deletions)
+from pr_insight.algo.language_handler import sort_files_by_main_languages
 from pr_insight.algo.token_handler import TokenHandler
-from pr_insight.algo.utils import get_max_tokens, clip_tokens, ModelType
+from pr_insight.algo.types import EDIT_TYPE, FilePatchInfo
+from pr_insight.algo.utils import (ModelType, clip_tokens, get_max_tokens,
+                                   get_weak_model)
 from pr_insight.config_loader import get_settings
 from pr_insight.git_providers.git_provider import GitProvider
-from pr_insight.algo.types import EDIT_TYPE, FilePatchInfo
 from pr_insight.log import get_logger
 
 DELETED_FILES_ = "Deleted files:\n"
@@ -204,10 +206,11 @@ def pr_generate_extended_diff(pr_languages: list,
             if not extended_patch:
                 get_logger().warning(f"Failed to extend patch for file: {file.filename}")
                 continue
-            full_extended_patch = f"\n\n## {file.filename}\n{extended_patch.rstrip()}\n"
 
             if add_line_numbers_to_hunks:
                 full_extended_patch = convert_to_hunks_with_lines_numbers(extended_patch, file)
+            else:
+                full_extended_patch = f"\n\n## File: '{file.filename.strip()}'\n{extended_patch.rstrip()}\n"
 
             # add AI-summary metadata to the patch
             if file.ai_file_summary and  get_settings().get("config.enable_ai_metadata", False):
@@ -315,13 +318,13 @@ def generate_full_patch(convert_hunks_to_line_numbers, file_dict, max_tokens_mod
             # TODO: Option for alternative logic to remove hunks from the patch to reduce the number of tokens
             #  until we meet the requirements
             if get_settings().config.verbosity_level >= 2:
-                get_logger().warning(f"Patch too large, skipping it, {filename}")
+                get_logger().warning(f"Patch too large, skipping it: '{filename}'")
             remaining_files_list_new.append(filename)
             continue
 
         if patch:
             if not convert_hunks_to_line_numbers:
-                patch_final = f"\n\n## File: '{filename.strip()}\n\n{patch.strip()}\n'"
+                patch_final = f"\n\n## File: '{filename.strip()}'\n\n{patch.strip()}\n"
             else:
                 patch_final = "\n\n" + patch.strip()
             patches.append(patch_final)
@@ -353,8 +356,8 @@ async def retry_with_fallback_models(f: Callable, model_type: ModelType = ModelT
 
 
 def _get_all_models(model_type: ModelType = ModelType.REGULAR) -> List[str]:
-    if model_type == ModelType.TURBO:
-        model = get_settings().config.model_turbo
+    if model_type == ModelType.WEAK:
+        model = get_weak_model()
     else:
         model = get_settings().config.model
     fallback_models = get_settings().config.fallback_models

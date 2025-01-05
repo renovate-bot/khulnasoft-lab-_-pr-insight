@@ -7,7 +7,8 @@ from jinja2 import Environment, StrictUndefined
 
 from pr_insight.algo.ai_handlers.base_ai_handler import BaseAiHandler
 from pr_insight.algo.ai_handlers.litellm_ai_handler import LiteLLMAIHandler
-from pr_insight.algo.pr_processing import get_pr_diff, retry_with_fallback_models
+from pr_insight.algo.pr_processing import (get_pr_diff,
+                                           retry_with_fallback_models)
 from pr_insight.algo.token_handler import TokenHandler
 from pr_insight.algo.utils import load_yaml
 from pr_insight.config_loader import get_settings
@@ -17,23 +18,9 @@ from pr_insight.log import get_logger
 
 
 class PRAddDocs:
-    """
-    The PRAddDocs class is responsible for generating code documentation for a pull request.
-    """
-
     def __init__(self, pr_url: str, cli_mode=False, args: list = None,
                  ai_handler: partial[BaseAiHandler,] = LiteLLMAIHandler):
-        """
-        Initialize the PRAddDocs object with the necessary attributes and objects for generating code documentation
-        using an AI model.
 
-        Args:
-            pr_url (str): The URL of the pull request.
-            cli_mode (bool, optional): Flag indicating if the CLI mode is enabled. Defaults to False.
-            args (list, optional): List of arguments passed to the PRAddDocs class. Defaults to None.
-            ai_handler (partial[BaseAiHandler,], optional): The AI handler to use for generating code documentation.
-                Defaults to LiteLLMAIHandler.
-        """
         self.git_provider = get_git_provider()(pr_url)
         self.main_language = get_main_pr_language(
             self.git_provider.get_languages(), self.git_provider.get_files()
@@ -62,9 +49,6 @@ class PRAddDocs:
                                           get_settings().pr_add_docs_prompt.user)
 
     async def run(self):
-        """
-        Generate code documentation for the pull request and publish it as inline code suggestions.
-        """
         try:
             get_logger().info('Generating code Docs for PR...')
             if get_settings().config.publish_output:
@@ -86,12 +70,6 @@ class PRAddDocs:
             get_logger().error(f"Failed to generate code documentation for PR, error: {e}")
 
     async def _prepare_prediction(self, model: str):
-        """
-        Prepare the AI prediction for generating code documentation.
-
-        Args:
-            model (str): The name of the AI model to use for generating code documentation.
-        """
         get_logger().info('Getting PR diff...')
 
         self.patches_diff = get_pr_diff(self.git_provider,
@@ -104,15 +82,6 @@ class PRAddDocs:
         self.prediction = await self._get_prediction(model)
 
     async def _get_prediction(self, model: str):
-        """
-        Get the AI prediction for generating code documentation.
-
-        Args:
-            model (str): The name of the AI model to use for generating code documentation.
-
-        Returns:
-            str: The AI prediction for generating code documentation.
-        """
         variables = copy.deepcopy(self.vars)
         variables["diff"] = self.patches_diff  # update diff
         environment = Environment(undefined=StrictUndefined)
@@ -127,12 +96,6 @@ class PRAddDocs:
         return response
 
     def _prepare_pr_code_docs(self) -> Dict:
-        """
-        Prepare the code documentation for the pull request.
-
-        Returns:
-            Dict: The code documentation for the pull request.
-        """
         docs = self.prediction.strip()
         data = load_yaml(docs)
         if isinstance(data, list):
@@ -140,12 +103,6 @@ class PRAddDocs:
         return data
 
     def push_inline_docs(self, data):
-        """
-        Publish the code documentation as inline code suggestions.
-
-        Args:
-            data (Dict): The code documentation for the pull request.
-        """
         docs = []
 
         if not data['Code Documentation']:
@@ -179,19 +136,6 @@ class PRAddDocs:
 
     def dedent_code(self, relevant_file, relevant_lines_start, new_code_snippet, doc_placement='after',
                     add_original_line=False):
-        """
-        Dedent the code snippet to match the indentation of the original code.
-
-        Args:
-            relevant_file (str): The relevant file for the code snippet.
-            relevant_lines_start (int): The starting line number of the relevant code.
-            new_code_snippet (str): The new code snippet to be added.
-            doc_placement (str, optional): The placement of the documentation. Defaults to 'after'.
-            add_original_line (bool, optional): Flag indicating if the original line should be added. Defaults to False.
-
-        Returns:
-            str: The dedented code snippet.
-        """
         try:  # dedent code snippet
             self.diff_files = self.git_provider.diff_files if self.git_provider.diff_files \
                 else self.git_provider.get_diff_files()
@@ -224,16 +168,6 @@ class PRAddDocs:
 
 
 def get_docs_for_language(language, style):
-    """
-    Get the documentation style for the given programming language.
-
-    Args:
-        language (str): The programming language.
-        style (str): The documentation style.
-
-    Returns:
-        str: The documentation style for the given programming language.
-    """
     language = language.lower()
     if language == 'java':
         return "Javadocs"

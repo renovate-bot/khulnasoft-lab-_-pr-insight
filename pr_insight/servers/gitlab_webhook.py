@@ -1,6 +1,6 @@
 import copy
-import re
 import json
+import re
 from datetime import datetime
 
 import uvicorn
@@ -12,10 +12,10 @@ from starlette.middleware import Middleware
 from starlette_context import context
 from starlette_context.middleware import RawContextMiddleware
 
-from pr_insight.insight.pr_insight import PRInsight
 from pr_insight.algo.utils import update_settings_from_args
 from pr_insight.config_loader import get_settings, global_settings
 from pr_insight.git_providers.utils import apply_repo_settings
+from pr_insight.insight.pr_insight import PRInsight
 from pr_insight.log import LoggingFormat, get_logger, setup_logger
 from pr_insight.secret_providers import get_secret_provider
 
@@ -61,6 +61,9 @@ async def handle_request(api_url: str, body: str, log_context: dict, sender_id: 
 async def _perform_commands_gitlab(commands_conf: str, insight: PRInsight, api_url: str,
                                    log_context: dict, data: dict):
     apply_repo_settings(api_url)
+    if commands_conf == "pr_commands" and get_settings().config.disable_auto_feedback:  # auto commands for PR, and auto feedback is disabled
+        get_logger().info(f"Auto feedback is disabled, skipping auto commands for PR {api_url=}", **log_context)
+        return
     if not should_process_pr_logic(data): # Here we already updated the configurations
         return
     commands = get_settings().get(f"gitlab.{commands_conf}", {})

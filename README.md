@@ -33,7 +33,7 @@
   - [KhulnaSoft-hosted PR-Insight Pro 💎](#khulnasoft-hosted-pr-insight-pro-)
   - [PR-Insight Chrome extension](#pr-insight-chrome-extension)
 - [Links](#links)
-  
+
 ## News and Updates
 
 ### May 31, 2024
@@ -127,12 +127,12 @@ ___
 
 ## Try it now
 
-Try the GPT-4 powered PR-Insight instantly on _your public GitHub repository_. Just mention `@KhulnaSoft` and add the desired command in any PR comment. The agent will generate a response based on your command.
+Try the GPT-4 powered PR-Insight instantly on _your public GitHub repository_. Just mention `@KhulnaSoft` and add the desired command in any PR comment. The insight will generate a response based on your command.
 For example, add a comment to any pull request with the following text:
 ```
 @KhulnaSoft /review
 ```
-and the agent will respond with a review of your PR
+and the insight will respond with a review of your PR
 
 
 To set up your own PR-Insight, see the [Installation](https://khulnasoft.github.io/pr-insight/installation/) section below.
@@ -183,7 +183,7 @@ Note that when you set your own PR-Insight or use KhulnaSoft hosted PR-Insight, 
 1. **Fully managed** - We take care of everything for you - hosting, models, regular updates, and more. Installation is as simple as signing up and adding the PR-Insight app to your GitHub\GitLab\BitBucket repo.
 2. **Improved privacy** - No data will be stored or used to train models. PR-Insight Pro will employ zero data retention, and will use an OpenAI account with zero data retention.
 3. **Improved support** - PR-Insight Pro users will receive priority support, and will be able to request new features and capabilities.
-4. **Extra features** -In addition to the benefits listed above, PR-Insight Pro will emphasize more customization, and the usage of static code analysis, in addition to LLM logic, to improve results. 
+4. **Extra features** -In addition to the benefits listed above, PR-Insight Pro will emphasize more customization, and the usage of static code analysis, in addition to LLM logic, to improve results.
 See [here](https://khulnasoft.github.io/pr-insight/#pr-insight-pro) for a list of features available in PR-Insight Pro.
 
 

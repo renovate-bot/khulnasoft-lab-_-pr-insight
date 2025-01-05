@@ -15,9 +15,8 @@ Be particularly vigilant for suggestions that:
     - Contradict or ignore parts of the PR's modifications
 In such cases, assign the suggestion a score of 0.
 
-valuate each valid suggestion by scoring its potential impact on the PR's correctness, quality and functionality.
+Evaluate each valid suggestion by scoring its potential impact on the PR's correctness, quality and functionality.
 In addition, you should also detect the line numbers in the '__new hunk__' section that correspond to the 'existing_code' snippet.
-
 
 Key guidelines for evaluation:
 - Thoroughly examine both the suggestion content and the corresponding PR code diff. Be vigilant for potential errors in each suggestion, ensuring they are logically sound, accurate, and directly derived from the PR code diff.
@@ -122,6 +121,25 @@ Below are {{ num_code_suggestions }} AI-generated code suggestions for enhancing
 {{ suggestion_str|trim }}
 ======
 
+
+{%- if duplicate_prompt_examples %}
+
+
+Example output:
+```yaml
+code_suggestions:
+- suggestion_summary: |
+    ...
+  relevant_file: "..."
+  relevant_lines_start: ...
+  relevant_lines_end: ...
+  suggestion_score: ...
+  why: |
+    ...
+- ...
+```
+(replace '...' with actual content)
+{%- endif %}
 
 Response (should be a valid YAML, and nothing else):
 ```yaml

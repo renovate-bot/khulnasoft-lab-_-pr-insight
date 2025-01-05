@@ -5,7 +5,8 @@ from jinja2 import Environment, StrictUndefined
 
 from pr_insight.algo.ai_handlers.base_ai_handler import BaseAiHandler
 from pr_insight.algo.ai_handlers.litellm_ai_handler import LiteLLMAIHandler
-from pr_insight.algo.pr_processing import get_pr_diff, retry_with_fallback_models
+from pr_insight.algo.pr_processing import (get_pr_diff,
+                                           retry_with_fallback_models)
 from pr_insight.algo.token_handler import TokenHandler
 from pr_insight.algo.utils import ModelType
 from pr_insight.config_loader import get_settings
@@ -63,7 +64,7 @@ class PRQuestions:
         if img_path:
             get_logger().debug(f"Image path identified", artifact=img_path)
 
-        await retry_with_fallback_models(self._prepare_prediction, model_type=ModelType.TURBO)
+        await retry_with_fallback_models(self._prepare_prediction, model_type=ModelType.WEAK)
 
         pr_comment = self._prepare_pr_answer()
         get_logger().debug(f"PR output", artifact=pr_comment)
@@ -117,6 +118,16 @@ class PRQuestions:
         return response
 
     def _prepare_pr_answer(self) -> str:
+        model_answer = self.prediction.strip()
+        # sanitize the answer so that no line will start with "/"
+        model_answer_sanitized = model_answer.replace("\n/", "\n /")
+        if model_answer_sanitized.startswith("/"):
+            model_answer_sanitized = " " + model_answer_sanitized
+        if model_answer_sanitized != model_answer:
+            get_logger().debug(f"Sanitized model answer",
+                               artifact={"model_answer": model_answer, "sanitized_answer": model_answer_sanitized})
+
+
         answer_str = f"### **Ask**❓\n{self.question_str}\n\n"
-        answer_str += f"### **Answer:**\n{self.prediction.strip()}\n\n"
+        answer_str += f"### **Answer:**\n{model_answer_sanitized}\n\n"
         return answer_str

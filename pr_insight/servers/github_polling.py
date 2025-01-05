@@ -1,15 +1,16 @@
 import asyncio
 import multiprocessing
-from collections import deque
-import traceback
-from datetime import datetime, timezone
 import time
-import requests
-import aiohttp
+import traceback
+from collections import deque
+from datetime import datetime, timezone
 
-from pr_insight.insight.pr_insight import PRInsight
+import aiohttp
+import requests
+
 from pr_insight.config_loader import get_settings
 from pr_insight.git_providers import get_git_provider
+from pr_insight.insight.pr_insight import PRInsight
 from pr_insight.log import LoggingFormat, get_logger, setup_logger
 
 setup_logger(fmt=LoggingFormat.JSON, level="DEBUG")
@@ -83,6 +84,7 @@ async def is_valid_notification(notification, headers, handled_ids, session, use
                     return False, handled_ids
                 async with session.get(latest_comment, headers=headers) as comment_response:
                     check_prev_comments = False
+                    user_tag = "@" + user_id
                     if comment_response.status == 200:
                         comment = await comment_response.json()
                         if 'id' in comment:
@@ -100,7 +102,6 @@ async def is_valid_notification(notification, headers, handled_ids, session, use
                             get_logger().debug(f"no comment_body")
                             check_prev_comments = True
                         else:
-                            user_tag = "@" + user_id
                             if user_tag not in comment_body:
                                 get_logger().debug(f"user_tag not in comment_body")
                                 check_prev_comments = True

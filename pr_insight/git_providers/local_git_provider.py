@@ -4,9 +4,9 @@ from typing import List
 
 from git import Repo
 
+from pr_insight.algo.types import EDIT_TYPE, FilePatchInfo
 from pr_insight.config_loader import _find_repository_root, get_settings
 from pr_insight.git_providers.git_provider import GitProvider
-from pr_insight.algo.types import EDIT_TYPE, FilePatchInfo
 from pr_insight.log import get_logger
 
 

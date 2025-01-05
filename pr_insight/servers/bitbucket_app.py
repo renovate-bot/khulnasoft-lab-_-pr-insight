@@ -16,12 +16,12 @@ from starlette.responses import JSONResponse
 from starlette_context import context
 from starlette_context.middleware import RawContextMiddleware
 
-from pr_insight.insight.pr_insight import PRInsight
 from pr_insight.algo.utils import update_settings_from_args
 from pr_insight.config_loader import get_settings, global_settings
 from pr_insight.git_providers.utils import apply_repo_settings
 from pr_insight.identity_providers import get_identity_provider
 from pr_insight.identity_providers.identity_provider import Eligibility
+from pr_insight.insight.pr_insight import PRInsight
 from pr_insight.log import LoggingFormat, get_logger, setup_logger
 from pr_insight.secret_providers import get_secret_provider
 from pr_insight.servers.github_action_runner import get_setting_or_env, is_true
@@ -77,6 +77,9 @@ async def handle_manifest(request: Request, response: Response):
 
 async def _perform_commands_bitbucket(commands_conf: str, insight: PRInsight, api_url: str, log_context: dict, data: dict):
     apply_repo_settings(api_url)
+    if commands_conf == "pr_commands" and get_settings().config.disable_auto_feedback:  # auto commands for PR, and auto feedback is disabled
+        get_logger().info(f"Auto feedback is disabled, skipping auto commands for PR {api_url=}")
+        return
     if data.get("event", "") == "pullrequest:created":
         if not should_process_pr_logic(data):
             return

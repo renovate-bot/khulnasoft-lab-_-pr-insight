@@ -2,9 +2,10 @@ import argparse
 import asyncio
 import os
 
-from pr_insight.insight.pr_insight import PRInsight, commands
+from pr_insight.algo.utils import get_version
 from pr_insight.config_loader import get_settings
-from pr_insight.log import setup_logger, get_logger
+from pr_insight.insight.pr_insight import PRInsight, commands
+from pr_insight.log import get_logger, setup_logger
 
 log_level = os.environ.get("LOG_LEVEL", "INFO")
 setup_logger(log_level)
@@ -45,6 +46,7 @@ def set_parser():
     To edit any configuration parameter from 'configuration.toml', just add -config_path=<value>.
     For example: 'python cli.py --pr_url=... review --pr_reviewer.extra_instructions="focus on the file: ..."'
     """)
+    parser.add_argument('--version', action='version', version=f'pr-insight {get_version()}')
     parser.add_argument('--pr_url', type=str, help='The URL of the PR to review', default=None)
     parser.add_argument('--issue_url', type=str, help='The URL of the Issue to review', default=None)
     parser.add_argument('command', type=str, help='The', choices=commands, default='review')

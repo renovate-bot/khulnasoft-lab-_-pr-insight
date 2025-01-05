@@ -1,6 +1,8 @@
 import pytest
+
 from pr_insight.algo.file_filter import filter_ignored
 from pr_insight.config_loader import global_settings
+
 
 class TestIgnoreFilter:
     def test_no_ignores(self):

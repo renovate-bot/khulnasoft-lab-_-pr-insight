@@ -1,9 +1,10 @@
 from os import environ
-from pr_insight.algo.ai_handlers.base_ai_handler import BaseAiHandler
+
 import openai
 from openai import APIError, AsyncOpenAI, RateLimitError, Timeout
 from retry import retry
 
+from pr_insight.algo.ai_handlers.base_ai_handler import BaseAiHandler
 from pr_insight.config_loader import get_settings
 from pr_insight.log import get_logger
 
@@ -57,10 +58,10 @@ class OpenAIHandler(BaseAiHandler):
                               model=model, usage=usage)
             return resp, finish_reason
         except (APIError, Timeout) as e:
-            get_logger().error("Error during OpenAI inference - Model: %s, Messages: %s", self.model, messages, exc_info=e)
+            get_logger().error("Error during OpenAI inference: ", e)
             raise
         except (RateLimitError) as e:
-            get_logger().error(f"Rate limit error during OpenAI inference - Model: {self.model}, Messages: {messages}", e)
+            get_logger().error("Rate limit error during OpenAI inference: ", e)
             raise
         except (Exception) as e:
             get_logger().error("Unknown error during OpenAI inference: ", e)

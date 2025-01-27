@@ -1,0 +1,8 @@
+[[analyzers]]
+name = "python"
+enabled = true
+dependency_file_paths = [
+  "requirements.txt"
+  "requirements-dev.txt",
+  "pyproject.toml"
+]

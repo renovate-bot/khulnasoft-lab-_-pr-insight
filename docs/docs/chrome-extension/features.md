@@ -29,7 +29,7 @@ For private repositories, after you found the setup that works for you, you can 
 
 ### Khulnasoft Merge filters
 
-Khulnasoft Merge filters is a sidepanel option. that allows you to filter different message in the conversation tab.
+Khulnasoft Merge filters are a sidepanel option. that allows you to filter different message in the conversation tab.
 
 For example, you can choose to present only message from Khulnasoft Merge, or filter those messages, focusing only on user's comments.
 

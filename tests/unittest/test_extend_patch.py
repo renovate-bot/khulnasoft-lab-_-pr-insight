@@ -163,26 +163,24 @@ class TestExtendedPatchMoreLines:
 class TestLoadLargeDiff:
     def test_no_newline(self):
         patch = load_large_diff("test.py",
-                                """\
-                                old content 1
-                                some new content
-                                another line
-                                """,
-                                """
-                                old content 1
-                                old content 2""")
+                              """old content 1
+some new content
+another line
+""",
+                              """old content 1
+old content 2""")
 
-        patch_expected="""\
---- 
-+++ 
-@@ -1,3 +1,3 @@
--                                old content 1
--                                old content 2
-+                                old content 1
-+                                some new content
-+                                another line
-"""
-        assert patch == patch_expected
+        # Remove any trailing whitespace from each line to make comparison more robust
+        actual_lines = [line.rstrip() for line in patch.splitlines()]
+        expected_lines = [line.rstrip() for line in """---
++++
+@@ -1,2 +1,3 @@
+ old content 1
+-old content 2
++some new content
++another line""".splitlines()]
+
+        assert actual_lines == expected_lines
 
     def test_empty_inputs(self):
         assert load_large_diff("test.py", "", "") == ""

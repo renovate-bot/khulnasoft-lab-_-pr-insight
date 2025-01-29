@@ -46,8 +46,6 @@ to
 
 New tool  [/Implement](https://pr-insight-docs.khulnasoft.com/tools/implement/) (💎), which converts human code review discussions and feedback into ready-to-commit code changes.
 
-<kbd><img src="https://www.khulnasoft.com/images/pr_insight/implement1.png" width="512"></kbd>
-
 
 ### Jan 1, 2025
 
@@ -79,16 +77,6 @@ A new mode was enabled by default for code suggestions - `--pr_code_suggestions.
 - The suggestions will be categorized into just two groups: "Possible Issues" and "General".
 
 Still, if you prefer the previous mode, you can set `--pr_code_suggestions.focus_only_on_problems=false` in the [configuration file](https://pr-insight-docs.khulnasoft.com/usage-guide/configuration_options/).
-
-**Example results:**
-
-Original mode
-
-<kbd><img src="https://khulnasoft.com/images/pr_insight/code_suggestions_original_mode.png" width="512"></kbd>
-
-Focused mode
-
-<kbd><img src="https://khulnasoft.com/images/pr_insight/code_suggestions_focused_mode.png" width="512"></kbd>
 
 
 ## Overview
@@ -168,43 +156,6 @@ ___
 ‣ **Implement 💎 ([`/implement`](https://pr-insight-docs.khulnasoft.com/tools/implement/))**: Generates implementation code from review suggestions.
 ___
 
-## Example results
-</div>
-<h4><a href="https://github.com/Khulnasoft/pr-insight/pull/530">/describe</a></h4>
-<div align="center">
-<p float="center">
-<img src="https://www.khulnasoft.com/images/pr_insight/describe_new_short_main.png" width="512">
-</p>
-</div>
-<hr>
-
-<h4><a href="https://github.com/Khulnasoft/pr-insight/pull/732#issuecomment-1975099151">/review</a></h4>
-<div align="center">
-<p float="center">
-<kbd>
-<img src="https://www.khulnasoft.com/images/pr_insight/review_new_short_main.png" width="512">
-</kbd>
-</p>
-</div>
-<hr>
-
-<h4><a href="https://github.com/Khulnasoft/pr-insight/pull/732#issuecomment-1975099159">/improve</a></h4>
-<div align="center">
-<p float="center">
-<kbd>
-<img src="https://www.khulnasoft.com/images/pr_insight/improve_new_short_main.png" width="512">
-</kbd>
-</p>
-</div>
-
-
-<div align="left">
-
-
-</div>
-<hr>
-
-
 ## Try it now
 
 Try the GPT-4 powered PR-Insight instantly on _your public GitHub repository_. Just mention `@KhulnaSoft-Agent` and add the desired command in any PR comment. The agent will generate a response based on your command.
@@ -216,9 +167,6 @@ and the agent will respond with a review of your PR.
 
 Note that this is a promotional bot, suitable only for initial experimentation.
 It does not have 'edit' access to your repo, for example, so it cannot update the PR description or add labels (`@KhulnaSoft-Agent /describe` will publish PR description as a comment). In addition, the bot cannot be used on private repositories, as it does not have access to the files there.
-
-
-![Review generation process](https://www.khulnasoft.com/images/demo-2.gif)
 
 
 To set up your own PR-Insight, see the [Installation](https://pr-insight-docs.khulnasoft.com/installation/) section below.
@@ -240,8 +188,6 @@ See [here](https://pr-insight-docs.khulnasoft.com/overview/pr_insight_pro/) for 
 ## How it works
 
 The following diagram illustrates PR-Insight tools and their flow:
-
-![PR-Insight Tools](https://www.khulnasoft.com/images/pr_insight/diagram-v0.9.png)
 
 Check out the [PR Compression strategy](https://pr-insight-docs.khulnasoft.com/core-abilities/#pr-compression-strategy) page for more details on how we convert a code diff to a manageable LLM prompt
 

@@ -58,7 +58,7 @@ extra_instructions = "..."
   </tr>
   <tr>
   <td><b>final_update_message</b></td>
-  <td>When set to true, updating a persistent review comment during online commenting will automatically add a short comment with a link to the updated review in the pull request .Default is true.</td>
+  <td>When set to true, updating a persistent review comment during online commenting will automatically add a short comment with a link to the updated review in the pull request. Default is true.</td>
   </tr>
   <tr>
     <td><b>extra_instructions</b></td>

@@ -35,8 +35,8 @@ The open-source GitHub organization was updated:
 `https://github.com/khulnasoft/pr-insight` →
 `https://github.com/khulnasoft/pr-insight`
 
-The docker should be redirected automatically to the new location.
-However, if you have any issues, please update the GitHub action docker image from
+The Docker image should be redirected automatically to the new location.
+However, if you have any issues, please update the GitHub action Docker image from
 `uses: Khulnasoft/pr-insight@main`
 to
 `uses: khulnasoft-ai/pr-insight@main`

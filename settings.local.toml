@@ -1,0 +1,14 @@
+[github]
+# GitHub Personal Access Token (PAT)
+# This token is required for pr-insight to access GitHub repositories.
+# To create a token:
+# 1. Go to GitHub.com → Settings → Developer Settings → Personal Access Tokens → Tokens (classic)
+# 2. Generate a new token with 'repo' scope permissions
+# 3. Copy and paste your token below (replace YOUR_GITHUB_TOKEN with the actual token)
+# Note: Keep this token secure and don't share it publicly!
+
+user_token = "@format ${GITHUB_TOKEN}"
+
+# Alternatively, you can set the GITHUB_TOKEN environment variable instead of using this file:
+# export GITHUB_TOKEN=your_token  # for bash/zsh
+# set GITHUB_TOKEN=your_token     # for Windows cmd

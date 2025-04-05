@@ -1,18 +1,20 @@
 class HelpMessage:
     @staticmethod
     def get_general_commands_text():
-       commands_text = "> - **/review**: Request a review of your Pull Request.   \n" \
-                "> - **/describe**: Update the PR title and description based on the contents of the PR.   \n" \
-                "> - **/improve [--extended]**: Suggest code improvements. Extended mode provides a higher quality feedback.   \n" \
-                "> - **/ask \\<QUESTION\\>**: Ask a question about the PR.   \n" \
-                "> - **/update_changelog**: Update the changelog based on the PR's contents.   \n" \
-                "> - **/add_docs** 💎: Generate docstring for new components introduced in the PR.   \n" \
-                "> - **/generate_labels** 💎: Generate labels for the PR based on the PR's contents.   \n" \
-                "> - **/analyze** 💎: Automatically analyzes the PR, and presents changes walkthrough for each component.   \n\n" \
-                ">See the [tools guide](https://pr-insight-docs.khulnasoft.com/tools/) for more details.\n" \
-                ">To list the possible configuration parameters, add a **/config** comment.   \n"
-       return commands_text
-
+        commands_text = (
+            "> - **/review**: Request a review of your Pull Request.   \n"
+            "> - **/describe**: Update the PR title and description based on the contents of the PR.   \n"
+            "> - **/improve [--extended]**: Suggest code improvements. Extended mode provides a higher quality feedback.   \n"
+            "> - **/ask \\<QUESTION\\>**: Ask a question about the PR.   \n"
+            "> - **/update_changelog**: Update the changelog based on the PR's contents.   \n"
+            "> - **/help_docs \\<QUESTION\\>**: Given a path to documentation (either for this repository or for a given one), ask a question.   \n"
+            "> - **/add_docs** 💎: Generate docstring for new components introduced in the PR.   \n"
+            "> - **/generate_labels** 💎: Generate labels for the PR based on the PR's contents.   \n"
+            "> - **/analyze** 💎: Automatically analyzes the PR, and presents changes walkthrough for each component.   \n\n"
+            ">See the [tools guide](https://pr-insight-docs.khulnasoft/tools/) for more details.\n"
+            ">To list the possible configuration parameters, add a **/config** comment.   \n"
+        )
+        return commands_text
 
     @staticmethod
     def get_general_bot_help_text():
@@ -21,15 +23,17 @@ class HelpMessage:
 
     @staticmethod
     def get_review_usage_guide():
-        output ="**Overview:**\n"
-        output +=("The `review` tool scans the PR code changes, and generates a PR review which includes several types of feedbacks, such as possible PR issues, security threats and relevant test in the PR. More feedbacks can be [added](https://pr-insight-docs.khulnasoft.com/tools/review/#general-configurations) by configuring the tool.\n\n"
-                  "The tool can be triggered [automatically](https://pr-insight-docs.khulnasoft.com/usage-guide/automations_and_usage/#github-app-automatic-tools-when-a-new-pr-is-opened) every time a new PR is opened, or can be invoked manually by commenting on any PR.\n")
-        output +="""\
+        output = "**Overview:**\n"
+        output += (
+            "The `review` tool scans the PR code changes, and generates a PR review which includes several types of feedbacks, such as possible PR issues, security threats and relevant test in the PR. More feedbacks can be [added](https://pr-insight-docs.khulnasoft/tools/review/#general-configurations) by configuring the tool.\n\n"
+            "The tool can be triggered [automatically](https://pr-insight-docs.khulnasoft/usage-guide/automations_and_usage/#github-app-automatic-tools-when-a-new-pr-is-opened) every time a new PR is opened, or can be invoked manually by commenting on any PR.\n"
+        )
+        output += """\
 - When commenting, to edit [configurations](https://github.com/Khulnasoft/pr-insight/blob/main/pr_insight/settings/configuration.toml#L23) related to the review tool (`pr_reviewer` section), use the following template:
 ```
 /review --pr_reviewer.some_config1=... --pr_reviewer.some_config2=...
 ```
-- With a [configuration file](https://pr-insight-docs.khulnasoft.com/usage-guide/configuration_options/), use the following template:
+- With a [configuration file](https://pr-insight-docs.khulnasoft/usage-guide/configuration_options/), use the following template:
 ```
 [pr_reviewer]
 some_config1=...
@@ -37,24 +41,22 @@ some_config2=...
 ```
     """
 
-        output += f"\n\nSee the review [usage page](https://pr-insight-docs.khulnasoft.com/tools/review/) for a comprehensive guide on using this tool.\n\n"
+        output += f"\n\nSee the review [usage page](https://pr-insight-docs.khulnasoft/tools/review/) for a comprehensive guide on using this tool.\n\n"
 
         return output
-
-
 
     @staticmethod
     def get_describe_usage_guide():
         output = "**Overview:**\n"
         output += "The `describe` tool scans the PR code changes, and generates a description for the PR - title, type, summary, walkthrough and labels. "
-        output += "The tool can be triggered [automatically](https://pr-insight-docs.khulnasoft.com/usage-guide/automations_and_usage/#github-app-automatic-tools-when-a-new-pr-is-opened) every time a new PR is opened, or can be invoked manually by commenting on a PR.\n"
+        output += "The tool can be triggered [automatically](https://pr-insight-docs.khulnasoft/usage-guide/automations_and_usage/#github-app-automatic-tools-when-a-new-pr-is-opened) every time a new PR is opened, or can be invoked manually by commenting on a PR.\n"
         output += """\
 
 When commenting, to edit [configurations](https://github.com/Khulnasoft/pr-insight/blob/main/pr_insight/settings/configuration.toml#L46) related to the describe tool (`pr_description` section), use the following template:
 ```
 /describe --pr_description.some_config1=... --pr_description.some_config2=...
 ```
-With a [configuration file](https://pr-insight-docs.khulnasoft.com/usage-guide/configuration_options/), use the following template:
+With a [configuration file](https://pr-insight-docs.khulnasoft/usage-guide/configuration_options/), use the following template:
 ```
 [pr_description]
 some_config1=...
@@ -66,7 +68,7 @@ some_config2=...
         # automation
         output += "<tr><td><details> <summary><strong> Enabling\\disabling automation </strong></summary><hr>\n\n"
         output += """\
-- When you first install the app, the [default mode](https://pr-insight-docs.khulnasoft.com/usage-guide/automations_and_usage/#github-app-automatic-tools-when-a-new-pr-is-opened) for the describe tool is:
+- When you first install the app, the [default mode](https://pr-insight-docs.khulnasoft/usage-guide/automations_and_usage/#github-app-automatic-tools-when-a-new-pr-is-opened) for the describe tool is:
 ```
 pr_commands = ["/describe", ...]
 ```
@@ -91,7 +93,7 @@ Note that when markers are enabled, if the original PR description does not cont
         output += """\
 The default labels of the `describe` tool are quite generic: [`Bug fix`, `Tests`, `Enhancement`, `Documentation`, `Other`].
 
-If you specify [custom labels](https://pr-insight-docs.khulnasoft.com/tools/describe/#handle-custom-labels-from-the-repos-labels-page) in the repo's labels page or via configuration file, you can get tailored labels for your use cases.
+If you specify [custom labels](https://pr-insight-docs.khulnasoft/tools/describe/#handle-custom-labels-from-the-repos-labels-page) in the repo's labels page or via configuration file, you can get tailored labels for your use cases.
 Examples for custom labels:
 - `Main topic:performance` - pr_insight:The main topic of this PR is performance
 - `New endpoint` - pr_insight:A new endpoint was added in this PR
@@ -137,7 +139,6 @@ Use triple quotes to write multi-line instructions. Use bullet points to make th
 '''
         output += "\n\n</details></td></tr>\n\n"
 
-
         # general
         output += "\n\n<tr><td><details> <summary><strong> More PR-Insight commands</strong></summary><hr> \n\n"
         output += HelpMessage.get_general_bot_help_text()
@@ -145,7 +146,7 @@ Use triple quotes to write multi-line instructions. Use bullet points to make th
 
         output += "</table>"
 
-        output += f"\n\nSee the [describe usage](https://pr-insight-docs.khulnasoft.com/tools/describe/) page for a comprehensive guide on using this tool.\n\n"
+        output += f"\n\nSee the [describe usage](https://pr-insight-docs.khulnasoft/tools/describe/) page for a comprehensive guide on using this tool.\n\n"
 
         return output
 
@@ -171,16 +172,15 @@ You can ask questions about the entire PR, about specific code lines, or about a
         #
         # output += "</table>"
 
-        output += f"\n\nSee the [ask usage](https://pr-insight-docs.khulnasoft.com/tools/ask/) page for a comprehensive guide on using this tool.\n\n"
+        output += f"\n\nSee the [ask usage](https://pr-insight-docs.khulnasoft/tools/ask/) page for a comprehensive guide on using this tool.\n\n"
 
         return output
-
 
     @staticmethod
     def get_improve_usage_guide():
         output = "**Overview:**\n"
         output += "The code suggestions tool, named `improve`, scans the PR code changes, and automatically generates code suggestions for improving the PR."
-        output += "The tool can be triggered [automatically](https://pr-insight-docs.khulnasoft.com/usage-guide/automations_and_usage/#github-app-automatic-tools-when-a-new-pr-is-opened) every time a new PR is opened, or can be invoked manually by commenting on a PR.\n"
+        output += "The tool can be triggered [automatically](https://pr-insight-docs.khulnasoft/usage-guide/automations_and_usage/#github-app-automatic-tools-when-a-new-pr-is-opened) every time a new PR is opened, or can be invoked manually by commenting on a PR.\n"
         output += """\
 - When commenting, to edit [configurations](https://github.com/Khulnasoft/pr-insight/blob/main/pr_insight/settings/configuration.toml#L78) related to the improve tool (`pr_code_suggestions` section), use the following template:
 
@@ -188,7 +188,7 @@ You can ask questions about the entire PR, about specific code lines, or about a
 /improve --pr_code_suggestions.some_config1=... --pr_code_suggestions.some_config2=...
 ```
 
-- With a [configuration file](https://pr-insight-docs.khulnasoft.com/usage-guide/configuration_options/), use the following template:
+- With a [configuration file](https://pr-insight-docs.khulnasoft/usage-guide/configuration_options/), use the following template:
 
 ```
 [pr_code_suggestions]
@@ -198,6 +198,19 @@ some_config2=...
 
 """
 
-        output += f"\n\nSee the improve [usage page](https://pr-insight-docs.khulnasoft.com/tools/improve/) for a comprehensive guide on using this tool.\n\n"
+        output += f"\n\nSee the improve [usage page](https://pr-insight-docs.khulnasoft/tools/improve/) for a comprehensive guide on using this tool.\n\n"
 
+        return output
+
+    @staticmethod
+    def get_help_docs_usage_guide():
+        output = "**Overview:**\n"
+        output += """\
+The help docs tool, named `help_docs`, answers a question based on a given relative path of documentation, either from the repository of this merge request or from a given one."
+It can be invoked manually by commenting on any PR:
+```
+/help_docs "..."
+```
+"""
+        output += f"\n\nSee the [help_docs usage](https://pr-insight-docs.khulnasoft/tools/help_docs/) page for a comprehensive guide on using this tool.\n\n"
         return output

@@ -1,10 +1,10 @@
-# Khulnasoft Merge Code Fine-tuning Benchmark
+# Pr Merge Code Fine-tuning Benchmark
 
-On coding tasks, the gap between open-source models and top closed-source models such as GPT4 is significant.
+On coding tasks, the gap between open-source models and top closed-source models such as GPT-4o is significant.
 <br>
 In practice, open-source models are unsuitable for most real-world code tasks, and require further fine-tuning to produce acceptable results.
 
-_Khulnasoft Merge fine-tuning benchmark_ aims to benchmark open-source models on their ability to be fine-tuned for a coding task.
+_Pr Merge fine-tuning benchmark_ aims to benchmark open-source models on their ability to be fine-tuned for a coding task.
 Specifically, we chose to fine-tune open-source models on the task of analyzing a pull request, and providing useful feedback and code suggestions.
 
 Here are the results:
@@ -53,7 +53,7 @@ Here are the results:
 
 ### Training dataset
 
-Our training dataset comprises 25,000 pull requests, aggregated from permissive license repos. For each pull request, we generated responses for the three main tools of Khulnasoft Merge:
+Our training dataset comprises 25,000 pull requests, aggregated from permissive license repos. For each pull request, we generated responses for the three main tools of Pr Merge:
 [Describe](https://pr-insight-docs.khulnasoft.com/tools/describe/), [Review](https://pr-insight-docs.khulnasoft.com/tools/improve/) and [Improve](https://pr-insight-docs.khulnasoft.com/tools/improve/).
 
 On the raw data collected, we employed various automatic and manual cleaning techniques to ensure the outputs were of the highest quality, and suitable for instruct-tuning.
@@ -68,7 +68,7 @@ Here are the prompts, and example outputs, used as input-output pairs to fine-tu
 
 ### Evaluation dataset
 
-- For each tool, we aggregated 100 additional examples to be used for evaluation. These examples were not used in the training dataset, and were manually selected to represent diverse real-world use-cases.
+- For each tool, we aggregated 200 additional examples to be used for evaluation. These examples were not used in the training dataset, and were manually selected to represent diverse real-world use-cases.
 - For each test example, we generated two responses: one from the fine-tuned model, and one from the best code model in the world, `gpt-4-turbo-2024-04-09`.
 
 - We used a third LLM to judge which response better answers the prompt, and will likely be perceived by a human as better response.

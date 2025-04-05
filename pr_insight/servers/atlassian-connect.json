@@ -4,7 +4,7 @@
   "key": "app_key",
   "vendor": {
     "name": "KhulnaSoft",
-    "url": "https://khulnasoft.com"
+    "url": "https://khulnasoft"
   },
   "authentication": {
     "type": "jwt"

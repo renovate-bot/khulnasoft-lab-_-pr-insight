@@ -12,8 +12,7 @@ It can be invoked manually by commenting on any PR:
 
 An example result:
 
-![Analyze 1](https://khulnasoft.com/images/pr_insight/analyze_1.png){width=750}
+![Analyze 1](https://khulnasoft/images/pr_insight/analyze_1.png){width=750}
 
-**Notes**
-
-- Language that are currently supported: Python, Java, C++, JavaScript, TypeScript, C#.
+!!! note "Language that are currently supported:"
+    Python, Java, C++, JavaScript, TypeScript, C#.

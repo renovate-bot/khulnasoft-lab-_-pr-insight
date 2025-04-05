@@ -1,6 +1,6 @@
 ## Overview - Static Code Analysis 💎
 
-By combining static code analysis with LLM capabilities, Khulnasoft Merge can provide a comprehensive analysis of the PR code changes on a component level.
+By combining static code analysis with LLM capabilities, Pr Merge can provide a comprehensive analysis of the PR code changes on a component level.
 
 It scans the PR code changes, finds all the code components (methods, functions, classes) that changed, and enables to interactively generate tests, docs, code suggestions and similar code search for each component.
 
@@ -21,7 +21,7 @@ It can be invoked manually by commenting on any PR:
 
 An example result:
 
-![Analyze 1](https://khulnasoft.com/images/pr_insight/analyze_1.png){width=768}
+![Analyze 1](https://khulnasoft/images/pr_insight/analyze_1.png){width=768}
 
 Clicking on each checkbox will trigger the relevant tool for the selected component.
 
@@ -34,7 +34,7 @@ It can be invoked manually by commenting on any PR:
 ```
 where 'component_name' is the name of a specific component in the PR,  Or be triggered interactively by using the `analyze` tool.
 
-![test1](https://khulnasoft.com/images/pr_insight/test1.png){width=768}
+![test1](https://khulnasoft/images/pr_insight/test1.png){width=768}
 
 ### Generate Docs for a Component
 
@@ -46,7 +46,7 @@ It can be invoked manually by commenting on any PR:
 
 Or be triggered interactively by using the `analyze` tool.
 
-![Docs single component](https://khulnasoft.com/images/pr_insight/docs_single_component.png){width=768}
+![Docs single component](https://khulnasoft/images/pr_insight/docs_single_component.png){width=768}
 
 ### Generate Code Suggestions for a Component
 The [`improve_component`](https://pr-insight-docs.khulnasoft.com/tools/improve_component/) tool generates code suggestions for a specific code component that changed in the PR.
@@ -57,7 +57,7 @@ It can be invoked manually by commenting on any PR:
 
 Or be triggered interactively by using the `analyze` tool.
 
-![improve_component2](https://khulnasoft.com/images/pr_insight/improve_component2.png){width=768}
+![improve_component2](https://khulnasoft/images/pr_insight/improve_component2.png){width=768}
 
 ### Find Similar Code
 
@@ -67,4 +67,4 @@ For example:
 
 `Global Search` for a method called `chat_completion`:
 
-![similar code global](https://khulnasoft.com/images/pr_insight/similar_code_global2.png){width=768}
+![similar code global](https://khulnasoft/images/pr_insight/similar_code_global2.png){width=768}

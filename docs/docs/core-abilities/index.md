@@ -1,5 +1,5 @@
 # Core Abilities
-Khulnasoft Merge utilizes a variety of core abilities to provide a comprehensive and efficient code review experience. These abilities include:
+Pr Merge utilizes a variety of core abilities to provide a comprehensive and efficient code review experience. These abilities include:
 
 - [Fetching ticket context](https://pr-insight-docs.khulnasoft.com/core-abilities/fetching_ticket_context/)
 - [Auto best practices](https://pr-insight-docs.khulnasoft.com/core-abilities/auto_best_practices/)
@@ -7,10 +7,11 @@ Khulnasoft Merge utilizes a variety of core abilities to provide a comprehensive
 - [Dynamic context](https://pr-insight-docs.khulnasoft.com/core-abilities/dynamic_context/)
 - [Self-reflection](https://pr-insight-docs.khulnasoft.com/core-abilities/self_reflection/)
 - [Impact evaluation](https://pr-insight-docs.khulnasoft.com/core-abilities/impact_evaluation/)
-- [Interactivity](https://pr-insight-docs.khulnasoft.com/core-abilities/interactivity/)
-- [Compression strategy](https://pr-insight-docs.khulnasoft.com/core-abilities/compression_strategy/)
-- [Code-oriented YAML](https://pr-insight-docs.khulnasoft.com/core-abilities/code_oriented_yaml/)
+- [RAG context enrichment](https://pr-insight-docs.khulnasoft.com/core-abilities/rag_context_enrichment/)
 - [Static code analysis](https://pr-insight-docs.khulnasoft.com/core-abilities/static_code_analysis/)
+- [Compression strategy](https://pr-insight-docs.khulnasoft.com/core-abilities/compression_strategy/)
+- [Code validation](https://pr-insight-docs.khulnasoft.com/core-abilities/code_validation/)
+- [Interactivity](https://pr-insight-docs.khulnasoft.com/core-abilities/interactivity/)
 - [Code fine-tuning benchmark](https://pr-insight-docs.khulnasoft.com/finetuning_benchmark/)
 
 ## Blogs
@@ -19,7 +20,8 @@ Here are some additional technical blogs from Khulnasoft, that delve deeper into
 These resources provide more comprehensive insights into leveraging LLMs for software development.
 
 ### Code Generation and LLMs
-- [State-of-the-art Code Generation with AlphaKhulnasoft – From Prompt Engineering to Flow Engineering](https://www.khulnasoft.com/blog/khulnasoftflow-state-of-the-art-code-generation-for-code-contests/)
+- [Effective AI code suggestions: less is more](https://www.khulnasoft.com/blog/effective-code-suggestions-llms-less-is-more/)
+- [State-of-the-art Code Generation with AlphaKhulnasoft – From Prompt Engineering to Flow Engineering](https://www.khulnasoft.com/blog/prflow-state-of-the-art-code-generation-for-code-contests/)
 - [RAG for a Codebase with 10k Repos](https://www.khulnasoft.com/blog/rag-for-large-scale-code-repos/)
 
 ### Development Processes

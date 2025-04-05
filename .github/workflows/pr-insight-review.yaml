@@ -1,5 +1,5 @@
 # This workflow enables developers to call PR-Insights `/[actions]` in PR's comments and upon PR creation.
-# Learn more at https://www.khulnasoft.com/pr-insight/
+# Learn more at https://www.khulnasoft/pr-insight/
 # This is v0.2 of this workflow file
 
 name: PR-Insight

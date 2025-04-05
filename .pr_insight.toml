@@ -1,3 +1,7 @@
 [pr_reviewer]
 enable_review_labels_effort = true
 enable_auto_approval = true
+
+[github]
+# Using GitHub token from environment variable
+user_token = "@format ${GITHUB_TOKEN}"

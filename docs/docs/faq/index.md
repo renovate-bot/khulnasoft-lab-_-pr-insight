@@ -1,14 +1,14 @@
 # FAQ
 
-??? note "Q: Can Khulnasoft Merge serve as a substitute for a human reviewer?"
+??? note "Q: Can Pr Merge serve as a substitute for a human reviewer?"
     #### Answer:<span style="display:none;">1</span>
 
-    Khulnasoft Merge is designed to assist, not replace, human reviewers.
+    Pr Merge is designed to assist, not replace, human reviewers.
 
     Reviewing PRs is a tedious and time-consuming task often seen as a "chore". In addition, the longer the PR – the shorter the relative feedback, since long PRs can overwhelm reviewers, both in terms of technical difficulty, and the actual review time.
-    Khulnasoft Merge aims to address these pain points, and to assist and empower both the PR author and reviewer.
+    Pr Merge aims to address these pain points, and to assist and empower both the PR author and reviewer.
 
-    However, Khulnasoft Merge has built-in safeguards to ensure the developer remains in the driver's seat. For example:
+    However, Pr Merge has built-in safeguards to ensure the developer remains in the driver's seat. For example:
 
     1. Preserves user's original PR header
     2. Places user's description above the AI-generated PR description
@@ -18,7 +18,7 @@
         - Highlight potential bugs or oversights
         - Enhance code quality and promote best practices
 
-    Read more about this issue in our [blog](https://www.khulnasoft.com/blog/understanding-the-challenges-and-pain-points-of-the-pull-request-cycle/)
+    Read more about this issue in our [blog](https://www.khulnasoft/blog/understanding-the-challenges-and-pain-points-of-the-pull-request-cycle/)
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
     #### Answer:<span style="display:none;">2</span>
 
-    - Modern AI models, like Claude 3.5 Sonnet and GPT-4, are improving rapidly but remain imperfect. Users should critically evaluate all suggestions rather than accepting them automatically.
+    - Modern AI models, like Claude Sonnet and GPT-4, are improving rapidly but remain imperfect. Users should critically evaluate all suggestions rather than accepting them automatically.
     - AI errors are rare, but possible. A main value from reviewing the code suggestions lies in their high probability of catching **mistakes or bugs made by the PR author**. We believe it's worth spending 30-60 seconds reviewing suggestions, even if some aren't relevant, as this practice can enhance code quality and prevent bugs in production.
 
 
@@ -50,27 +50,27 @@ ___
 ??? note "Q: Will you store my code? Are you using my code to train models?"
     #### Answer:<span style="display:none;">4</span>
 
-    No. Khulnasoft Merge strict privacy policy ensures that your code is not stored or used for training purposes.
+    No. Pr Merge strict privacy policy ensures that your code is not stored or used for training purposes.
 
     For a detailed overview of our data privacy policy, please refer to [this link](https://pr-insight-docs.khulnasoft.com/overview/data_privacy/)
 
 ___
 
-??? note "Q: Can I use my own LLM keys with Khulnasoft Merge?"
+??? note "Q: Can I use my own LLM keys with Pr Merge?"
     #### Answer:<span style="display:none;">5</span>
 
     When you self-host the [open-source](https://github.com/Khulnasoft/pr-insight) version, you use your own keys.
 
-    Khulnasoft Merge with SaaS deployment is a hosted version of Khulnasoft Merge, where Khulnasoft manages the infrastructure and the keys.
-    For enterprise customers, on-prem deployment is also available. [Contact us](https://www.khulnasoft.com/contact/#pricing) for more information.
+    Pr Merge with SaaS deployment is a hosted version of Pr Merge, where Khulnasoftmanages the infrastructure and the keys.
+    For enterprise customers, on-prem deployment is also available. [Contact us](https://www.khulnasoft/contact/#pricing) for more information.
 ___
 
-??? note "Q: Can Khulnasoft Merge review draft/offline PRs?"
+??? note "Q: Can Pr Merge review draft/offline PRs?"
     #### Answer:<span style="display:none;">5</span>
 
-    Yes. While Khulnasoft Merge won't automatically review draft PRs, you can still get feedback by manually requesting it through [online commenting](https://pr-insight-docs.khulnasoft.com/usage-guide/automations_and_usage/#online-usage).
+    Yes. While Pr Merge won't automatically review draft PRs, you can still get feedback by manually requesting it through [online commenting](https://pr-insight-docs.khulnasoft.com/usage-guide/automations_and_usage/#online-usage).
 
-    For active PRs, you can customize the automatic feedback settings [here](https://pr-insight-docs.khulnasoft.com/usage-guide/automations_and_usage/#khulnasoft-merge-automatic-feedback) to match your team's workflow.
+    For active PRs, you can customize the automatic feedback settings [here](https://pr-insight-docs.khulnasoft.com/usage-guide/automations_and_usage/#pr-merge-automatic-feedback) to match your team's workflow.
 ___
 
 ??? note "Q: Can the 'Review effort' feedback be calibrated or customized?"

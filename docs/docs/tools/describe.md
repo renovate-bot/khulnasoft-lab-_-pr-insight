@@ -12,11 +12,11 @@ The tool can be triggered automatically every time a new PR is [opened](../usage
 
 Invoke the tool manually by commenting `/describe` on any PR:
 
-![Describe comment](https://khulnasoft.com/images/pr_insight/describe_comment.png){width=512}
+![Describe comment](https://khulnasoft/images/pr_insight/describe_comment.png){width=512}
 
 After ~30 seconds, the tool will generate a description for the PR:
 
-![Describe New](https://khulnasoft.com/images/pr_insight/describe_new.png){width=512}
+![Describe New](https://khulnasoft/images/pr_insight/describe_new.png){width=512}
 
 If you want to edit [configurations](#configuration-options), add the relevant ones to the command:
 ```
@@ -46,56 +46,56 @@ publish_labels = true
 
 !!! example "Possible configurations"
 
-<table>
-  <tr>
-    <td><b>publish_labels</b></td>
-    <td>If set to true, the tool will publish labels to the PR. Default is false.</td>
-  </tr>
-  <tr>
-    <td><b>publish_description_as_comment</b></td>
-    <td>If set to true, the tool will publish the description as a comment to the PR. If false, it will overwrite the original description. Default is false.</td>
-  </tr>
-  <tr>
-    <td><b>publish_description_as_comment_persistent</b></td>
-    <td>If set to true and `publish_description_as_comment` is true, the tool will publish the description as a persistent comment to the PR. Default is true.</td>
-  </tr>
-  <tr>
-    <td><b>add_original_user_description</b></td>
-    <td>If set to true, the tool will add the original user description to the generated description. Default is true.</td>
-  </tr>
-  <tr>
-    <td><b>generate_ai_title</b></td>
-    <td>If set to true, the tool will also generate an AI title for the PR. Default is false.</td>
-  </tr>
-  <tr>
-    <td><b>extra_instructions</b></td>
-    <td>Optional extra instructions to the tool. For example: "focus on the changes in the file X. Ignore change in ..."</td>
-  </tr>
-  <tr>
-    <td><b>enable_pr_type</b></td>
-    <td>If set to false, it will not show the `PR type` as a text value in the description content. Default is true.</td>
-  </tr>
-  <tr>
-    <td><b>final_update_message</b></td>
-    <td>If set to true, it will add a comment message [`PR Description updated to latest commit...`](https://github.com/Khulnasoft/pr-insight/pull/499#issuecomment-1837412176) after finishing calling `/describe`. Default is false.</td>
-  </tr>
-  <tr>
-    <td><b>enable_semantic_files_types</b></td>
-    <td>If set to true, "Changes walkthrough" section will be generated. Default is true.</td>
-  </tr>
-  <tr>
-    <td><b>collapsible_file_list</b></td>
-    <td>If set to true, the file list in the "Changes walkthrough" section will be collapsible. If set to "adaptive", the file list will be collapsible only if there are more than 8 files. Default is "adaptive".</td>
-  </tr>
-  <tr>
-    <td><b>enable_large_pr_handling</b></td>
-    <td>Pro feature. If set to true, in case of a large PR the tool will make several calls to the AI and combine them to be able to cover more files. Default is true.</td>
-  </tr>
-  <tr>
-    <td><b>enable_help_text</b></td>
-    <td>If set to true, the tool will display a help text in the comment. Default is false.</td>
-  </tr>
-</table>
+    <table>
+      <tr>
+        <td><b>publish_labels</b></td>
+        <td>If set to true, the tool will publish labels to the PR. Default is false.</td>
+      </tr>
+      <tr>
+        <td><b>publish_description_as_comment</b></td>
+        <td>If set to true, the tool will publish the description as a comment to the PR. If false, it will overwrite the original description. Default is false.</td>
+      </tr>
+      <tr>
+        <td><b>publish_description_as_comment_persistent</b></td>
+        <td>If set to true and `publish_description_as_comment` is true, the tool will publish the description as a persistent comment to the PR. Default is true.</td>
+      </tr>
+      <tr>
+        <td><b>add_original_user_description</b></td>
+        <td>If set to true, the tool will add the original user description to the generated description. Default is true.</td>
+      </tr>
+      <tr>
+        <td><b>generate_ai_title</b></td>
+        <td>If set to true, the tool will also generate an AI title for the PR. Default is false.</td>
+      </tr>
+      <tr>
+        <td><b>extra_instructions</b></td>
+        <td>Optional extra instructions to the tool. For example: "focus on the changes in the file X. Ignore change in ..."</td>
+      </tr>
+      <tr>
+        <td><b>enable_pr_type</b></td>
+        <td>If set to false, it will not show the `PR type` as a text value in the description content. Default is true.</td>
+      </tr>
+      <tr>
+        <td><b>final_update_message</b></td>
+        <td>If set to true, it will add a comment message [`PR Description updated to latest commit...`](https://github.com/Khulnasoft/pr-insight/pull/499#issuecomment-1837412176) after finishing calling `/describe`. Default is false.</td>
+      </tr>
+      <tr>
+        <td><b>enable_semantic_files_types</b></td>
+        <td>If set to true, "Changes walkthrough" section will be generated. Default is true.</td>
+      </tr>
+      <tr>
+        <td><b>collapsible_file_list</b></td>
+        <td>If set to true, the file list in the "Changes walkthrough" section will be collapsible. If set to "adaptive", the file list will be collapsible only if there are more than 8 files. Default is "adaptive".</td>
+      </tr>
+      <tr>
+        <td><b>enable_large_pr_handling</b></td>
+        <td>Pro feature. If set to true, in case of a large PR the tool will make several calls to the AI and combine them to be able to cover more files. Default is true.</td>
+      </tr>
+      <tr>
+        <td><b>enable_help_text</b></td>
+        <td>If set to true, the tool will display a help text in the comment. Default is false.</td>
+      </tr>
+    </table>
 
 
 ## Inline file summary 💎
@@ -104,17 +104,17 @@ This feature enables you to copy the `changes walkthrough` table to the "Files c
 
 To copy the `changes walkthrough` table to the "Files changed" tab, you can click on the checkbox that appears PR Description status message below the main PR Description:
 
-![Add table checkbox](https://khulnasoft.com/images/pr_insight/add_table_checkbox.png){width=512}
+![Add table checkbox](https://khulnasoft/images/pr_insight/add_table_checkbox.png){width=512}
 
 If you prefer to have the file summaries appear in the "Files changed" tab on every PR, change the `pr_description.inline_file_summary` parameter in the configuration file, possible values are:
 
 - `'table'`: File changes walkthrough table will be displayed on the top of the "Files changed" tab, in addition to the "Conversation" tab.
 
-![Diffview table](https://khulnasoft.com/images/pr_insight/diffview-table.png){width=512}
+![Diffview table](https://khulnasoft/images/pr_insight/diffview-table.png){width=512}
 
 - `true`: A collapsible file comment with changes title and a changes summary for each file in the PR.
 
-![Diffview changes](https://khulnasoft.com/images/pr_insight/diffview_changes.png){width=512}
+![Diffview changes](https://khulnasoft/images/pr_insight/diffview_changes.png){width=512}
 
 - `false` (`default`): File changes walkthrough will be added only to the "Conversation" tab.
 
@@ -141,11 +141,11 @@ pr_insight:walkthrough
 ```
 The marker `pr_insight:type` will be replaced with the PR type, `pr_insight:summary` will be replaced with the PR summary, and `pr_insight:walkthrough` will be replaced with the PR walkthrough.
 
-![Describe markers before](https://khulnasoft.com/images/pr_insight/describe_markers_before.png){width=512}
+![Describe markers before](https://khulnasoft/images/pr_insight/describe_markers_before.png){width=512}
 
-&rarr;
+becomes
 
-![Describe markers after](https://khulnasoft.com/images/pr_insight/describe_markers_after.png){width=512}
+![Describe markers after](https://khulnasoft/images/pr_insight/describe_markers_after.png){width=512}
 
 
 **Configuration params**:
@@ -199,13 +199,13 @@ Examples for custom labels:
   - ...
 
 The description should be comprehensive and detailed, indicating when to add the desired label. For example:
-![Add native custom labels](https://khulnasoft.com/images/pr_insight/add_native_custom_labels.png){width=768}
+![Add native custom labels](https://khulnasoft/images/pr_insight/add_native_custom_labels.png){width=768}
 
 
 ## Usage Tips
 
 !!! tip "Automation"
-    - When you first install Khulnasoft Merge app, the [default mode](../usage-guide/automations_and_usage.md#github-app) for the describe tool is:
+    - When you first install Pr Merge app, the [default mode](../usage-guide/automations_and_usage.md#github-app) for the describe tool is:
     ```
     pr_commands = ["/describe", ...]
     ```

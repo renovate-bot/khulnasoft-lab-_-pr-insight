@@ -5,24 +5,24 @@ For example:
 
 `Global Search` for a method called `chat_completion`:
 
-![similar code global](https://khulnasoft.com/images/pr_insight/similar_code_global2.png){width=768}
+![similar code global](https://khulnasoft/images/pr_insight/similar_code_global2.png){width=768}
 
 
-Khulnasoft Merge will examine the code component and will extract the most relevant keywords to search for similar code:
+Pr Merge will examine the code component and will extract the most relevant keywords to search for similar code:
 
-- `extracted keywords`: the keywords that were extracted from the code by Khulnasoft Merge. the link will open a search page with the extracted keywords, to allow the user to modify the search if needed.
+- `extracted keywords`: the keywords that were extracted from the code by Pr Merge. the link will open a search page with the extracted keywords, to allow the user to modify the search if needed.
 - `search context`: the context in which the search will be performed, organization's codebase or open-source code (Global).
 - `similar code`: the most similar code components found. the link will open the code component in the relevant file.
 - `relevant repositories`: the open-source repositories in which that are relevant to the searched code component and it's keywords.
 
 Search result link example:
 
-![code search result single](https://khulnasoft.com/images/pr_insight/code_search_result_single.png){width=768}
+![code search result single](https://khulnasoft/images/pr_insight/code_search_result_single.png){width=768}
 
 
 `Organization Search`:
 
-![similar code org](https://khulnasoft.com/images/pr_insight/similar_code_org.png){width=768}
+![similar code org](https://khulnasoft/images/pr_insight/similar_code_org.png){width=768}
 
 
 ## How to use
@@ -50,11 +50,11 @@ It can be invoked automatically from the analyze table, can be accessed by:
 ```
 Choose the components you want to find similar code for, and click on the `similar` checkbox.
 
-![analyze similar](https://khulnasoft.com/images/pr_insight/analyze_similar.png){width=768}
+![analyze similar](https://khulnasoft/images/pr_insight/analyze_similar.png){width=768}
 
 You can search for similar code either within the organization's codebase or globally, which includes open-source repositories. Each result will include the relevant code components along with their associated license details.
 
-![similar code global](https://khulnasoft.com/images/pr_insight/similar_code_global.png){width=768}
+![similar code global](https://khulnasoft/images/pr_insight/similar_code_global.png){width=768}
 
 
 ## Configuration options

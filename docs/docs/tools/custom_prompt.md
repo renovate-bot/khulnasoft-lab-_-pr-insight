@@ -47,12 +47,12 @@ The code suggestions should focus only on the following:
 
 Results obtained with the prompt above:
 
-![Custom prompt results](https://khulnasoft.com/images/pr_insight/custom_suggestions_result.png){width=768}
+![Custom prompt results](https://khulnasoft/images/pr_insight/custom_suggestions_result.png){width=768}
 
 ## Configuration options
 
-`prompt`: the prompt for the tool. It should be a multi-line string.
+- `prompt`: the prompt for the tool. It should be a multi-line string.
 
-`num_code_suggestions`: number of code suggestions provided by the 'custom_prompt' tool. Default is 4.
+- `num_code_suggestions_per_chunk`: number of code suggestions provided by the 'custom_prompt' tool, per chunk. Default is 4.
 
-`enable_help_text`: if set to true, the tool will display a help text in the comment. Default is true.
+- `enable_help_text`: if set to true, the tool will display a help text in the comment. Default is true.

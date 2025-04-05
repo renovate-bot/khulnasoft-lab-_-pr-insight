@@ -7,9 +7,9 @@ It can be invoked manually by commenting on any PR:
 
 ## Example usage
 
-![update_changelog_comment](https://khulnasoft.com/images/pr_insight/update_changelog_comment.png){width=768}
+![update_changelog_comment](https://khulnasoft/images/pr_insight/update_changelog_comment.png){width=768}
 
-![update_changelog](https://khulnasoft.com/images/pr_insight/update_changelog.png){width=768}
+![update_changelog](https://khulnasoft/images/pr_insight/update_changelog.png){width=768}
 
 ## Configuration options
 

@@ -2,14 +2,15 @@
 `Supported Git Platforms: GitHub, GitLab, Bitbucket`
 
 ## Overview
-Khulnasoft Merge PR Insight streamlines code review workflows by seamlessly connecting with multiple ticket management systems.
+Pr Merge streamlines code review workflows by seamlessly connecting with multiple ticket management systems.
 This integration enriches the review process by automatically surfacing relevant ticket information and context alongside code changes.
 
-## Ticket systems supported
+**Ticket systems supported**:
+
 - GitHub
 - Jira (💎)
 
-Ticket data fetched:
+**Ticket data fetched:**
 
 1. Ticket Title
 2. Ticket Description
@@ -26,7 +27,7 @@ Ticket Recognition Requirements:
 - For Jira tickets, you should follow the instructions in [Jira Integration](https://pr-insight-docs.khulnasoft.com/core-abilities/fetching_ticket_context/#jira-integration) in order to authenticate with Jira.
 
 ### Describe tool
-Khulnasoft Merge PR Insight will recognize the ticket and use the ticket content (title, description, labels) to provide additional context for the code changes.
+Pr Merge will recognize the ticket and use the ticket content (title, description, labels) to provide additional context for the code changes.
 By understanding the reasoning and intent behind modifications, the LLM can offer more insightful and relevant code analysis.
 
 ### Review tool
@@ -46,56 +47,37 @@ If you want to disable this feedback, add the following line to your configurati
 require_ticket_analysis_review=false
 ```
 
-## Providers
+## GitHub Issues Integration
 
-### Github Issues Integration
-
-Khulnasoft Merge PR Insight will automatically recognize Github issues mentioned in the PR description and fetch the issue content.
+Pr Merge will automatically recognize GitHub issues mentioned in the PR description and fetch the issue content.
 Examples of valid GitHub issue references:
 
 - `https://github.com/<ORG_NAME>/<REPO_NAME>/issues/<ISSUE_NUMBER>`
 - `#<ISSUE_NUMBER>`
 - `<ORG_NAME>/<REPO_NAME>#<ISSUE_NUMBER>`
 
-Since Khulnasoft Merge PR Insight is integrated with GitHub, it doesn't require any additional configuration to fetch GitHub issues.
+Since Pr Merge is integrated with GitHub, it doesn't require any additional configuration to fetch GitHub issues.
 
-### Jira Integration 💎
+## Jira Integration 💎
 
 We support both Jira Cloud and Jira Server/Data Center.
-To integrate with Jira, you can link your PR to a ticket using either of these methods:
 
-**Method 1: Description Reference:**
-
-Include a ticket reference in your PR description using either the complete URL format https://<JIRA_ORG>.atlassian.net/browse/ISSUE-123 or the shortened ticket ID ISSUE-123.
-
-**Method 2: Branch Name Detection:**
-
-Name your branch with the ticket ID as a prefix (e.g., `ISSUE-123-feature-description` or `ISSUE-123/feature-description`).
-
-!!! note "Jira Base URL"
-    For shortened ticket IDs or branch detection (method 2), you must configure the Jira base URL in your configuration file under the [jira] section:
-
-    ```toml
-    [jira]
-    jira_base_url = "https://<JIRA_ORG>.atlassian.net"
-    ```
-
-#### Jira Cloud 💎
+### Jira Cloud
 There are two ways to authenticate with Jira Cloud:
 
 **1) Jira App Authentication**
 
-The recommended way to authenticate with Jira Cloud is to install the Khulnasoft Merge app in your Jira Cloud instance. This will allow Khulnasoft Merge to access Jira data on your behalf.
+The recommended way to authenticate with Jira Cloud is to install the Pr Merge app in your Jira Cloud instance. This will allow Pr Merge to access Jira data on your behalf.
 
 Installation steps:
 
-1. Click [here](https://auth.atlassian.com/authorize?audience=api.atlassian.com&client_id=8krKmA4gMD8mM8z24aRCgPCSepZNP1xf&scope=read%3Ajira-work%20offline_access&redirect_uri=https%3A%2F%2Fregister.jira.pr-insight.khulnasoft.com&state=khulnasoftmerge&response_type=code&prompt=consent) to install the Khulnasoft Merge app in your Jira Cloud instance, click the `accept` button.<br>
+1. Click [here](https://auth.atlassian.com/authorize?audience=api.atlassian.com&client_id=8krKmA4gMD8mM8z24aRCgPCSepZNP1xf&scope=read%3Ajira-work%20offline_access&redirect_uri=https%3A%2F%2Fregister.jira.pr-insight.khulnasoft&state=prmerge&response_type=code&prompt=consent) to install the Pr Merge app in your Jira Cloud instance, click the `accept` button.<br>
 ![Jira Cloud App Installation](https://www.khulnasoft.com/images/pr_insight/jira_app_installation1.png){width=384}
 
-2. After installing the app, you will be redirected to the Khulnasoft Merge registration page. and you will see a success message.<br>
+2. After installing the app, you will be redirected to the Pr Merge registration page. and you will see a success message.<br>
 ![Jira Cloud App success message](https://www.khulnasoft.com/images/pr_insight/jira_app_success.png){width=384}
 
-3. Now you can use the Jira integration in Khulnasoft Merge PR Insight.
+3. Now Pr Merge will be able to fetch Jira ticket context for your PRs.
 
 **2) Email/Token Authentication**
 
@@ -120,45 +102,70 @@ jira_api_email = "YOUR_EMAIL"
 ```
 
 
-#### Jira Data Center/Server 💎
+### Jira Data Center/Server
 
-##### Local App Authentication (For Khulnasoft Merge On-Premise Customers)
+[//]: # ()
+[//]: # (##### Local App Authentication &#40;For Pr Merge On-Premise Customers&#41;)
 
-##### 1. Step 1: Set up an application link in Jira Data Center/Server
-* Go to Jira Administration > Applications > Application Links > Click on `Create link`
+[//]: # ()
+[//]: # (##### 1. Step 1: Set up an application link in Jira Data Center/Server)
 
-![application links](https://www.khulnasoft.com/images/pr_insight/jira_app_links.png){width=384}
-* Choose `External application` and set the direction to `Incoming` and then click `Continue`
+[//]: # (* Go to Jira Administration > Applications > Application Links > Click on `Create link`)
 
-![external application](https://www.khulnasoft.com/images/pr_insight/jira_create_link.png){width=256}
-* In the following screen, enter the following details:
-    * Name: `Khulnasoft Merge`
-    * Redirect URL: Enter your Khulnasoft Merge URL followed  `https://{KHULNASOFT_MERGE_ENDPOINT}/register_ticket_provider`
-    * Permission: Select `Read`
-    * Click `Save`
+[//]: # ()
+[//]: # (![application links]&#40;https://www.khulnasoft.com/images/pr_insight/jira_app_links.png&#41;{width=384})
 
-![external application details](https://www.khulnasoft.com/images/pr_insight/jira_fill_app_link.png){width=384}
-* Copy the `Client ID` and `Client secret` and set them in your `.secrets` file:
+[//]: # (* Choose `External application` and set the direction to `Incoming` and then click `Continue`)
 
-![client id and secret](https://www.khulnasoft.com/images/pr_insight/jira_app_credentionals.png){width=256}
-```toml
-[jira]
-jira_app_secret = "..."
-jira_client_id = "..."
-```
+[//]: # ()
+[//]: # (![external application]&#40;https://www.khulnasoft.com/images/pr_insight/jira_create_link.png&#41;{width=256})
 
-##### 2. Step 2: Authenticate with Jira Data Center/Server
-* Open this URL in your browser: `https://{KHULNASOFT_MERGE_ENDPOINT}/jira_auth`
-* Click on link
+[//]: # (* In the following screen, enter the following details:)
 
-![jira auth success](https://www.khulnasoft.com/images/pr_insight/jira_auth_page.png){width=384}
+[//]: # (    * Name: `Pr Merge`)
 
-* You will be redirected to Jira Data Center/Server, click `Allow`
-* You will be redirected back to Khulnasoft Merge PR Insight and you will see a success message.
+[//]: # (    * Redirect URL: Enter your Pr Merge URL followed  `https://{PR_MERGE_ENDPOINT}/register_ticket_provider`)
+
+[//]: # (    * Permission: Select `Read`)
+
+[//]: # (    * Click `Save`)
+
+[//]: # ()
+[//]: # (![external application details]&#40;https://www.khulnasoft.com/images/pr_insight/jira_fill_app_link.png&#41;{width=384})
+
+[//]: # (* Copy the `Client ID` and `Client secret` and set them in your `.secrets` file:)
+
+[//]: # ()
+[//]: # (![client id and secret]&#40;https://www.khulnasoft.com/images/pr_insight/jira_app_credentionals.png&#41;{width=256})
+
+[//]: # (```toml)
+
+[//]: # ([jira])
+
+[//]: # (jira_app_secret = "...")
+
+[//]: # (jira_client_id = "...")
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (##### 2. Step 2: Authenticate with Jira Data Center/Server)
+
+[//]: # (* Open this URL in your browser: `https://{PR_MERGE_ENDPOINT}/jira_auth`)
+
+[//]: # (* Click on link)
+
+[//]: # ()
+[//]: # (![jira auth success]&#40;https://www.khulnasoft.com/images/pr_insight/jira_auth_page.png&#41;{width=384})
+
+[//]: # ()
+[//]: # (* You will be redirected to Jira Data Center/Server, click `Allow`)
+
+[//]: # (* You will be redirected back to Pr Merge and you will see a success message.)
 
 
-##### Personal Access Token (PAT) Authentication
-We also support Personal Access Token (PAT) Authentication method.
+[//]: # (Personal Access Token &#40;PAT&#41; Authentication)
+Currently, JIRA integration for Data Center/Server is available via Personal Access Token (PAT) Authentication method
 
 1. Create a [Personal Access Token (PAT)](https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html) in your Jira account
 2. In your Configuration file/Environment variables/Secrets file, add the following lines:
@@ -168,3 +175,23 @@ We also support Personal Access Token (PAT) Authentication method.
 jira_base_url = "YOUR_JIRA_BASE_URL" # e.g. https://jira.example.com
 jira_api_token = "YOUR_API_TOKEN"
 ```
+
+### How to link a PR to a Jira ticket
+
+To integrate with Jira, you can link your PR to a ticket using either of these methods:
+
+**Method 1: Description Reference:**
+
+Include a ticket reference in your PR description using either the complete URL format https://<JIRA_ORG>.atlassian.net/browse/ISSUE-123 or the shortened ticket ID ISSUE-123.
+
+**Method 2: Branch Name Detection:**
+
+Name your branch with the ticket ID as a prefix (e.g., `ISSUE-123-feature-description` or `ISSUE-123/feature-description`).
+
+!!! note "Jira Base URL"
+    For shortened ticket IDs or branch detection (method 2 for JIRA cloud), you must configure the Jira base URL in your configuration file under the [jira] section:
+
+    ```toml
+    [jira]
+    jira_base_url = "https://<JIRA_ORG>.atlassian.net"
+    ```

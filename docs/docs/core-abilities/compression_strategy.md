@@ -44,4 +44,4 @@ We use [tiktoken](https://github.com/openai/tiktoken) to tokenize the patches af
 
 #### Example
 
-![Core Abilities](https://khulnasoft.com/images/git_patch_logic.png){width=768}
+![Core Abilities](https://khulnasoft/images/git_patch_logic.png){width=768}

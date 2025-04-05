@@ -1,12 +1,11 @@
 `Supported Git Platforms: GitHub, GitLab, Bitbucket`
 
 
-For optimal functionality of Khulnasoft Merge, we recommend enabling a wiki for each repository where Khulnasoft Merge is installed. The wiki serves several important purposes:
+For optimal functionality of Pr Merge, we recommend enabling a wiki for each repository where Pr Merge is installed. The wiki serves several important purposes:
 
 **Key Wiki Features: 💎**
 
 - Storing a [configuration file](https://pr-insight-docs.khulnasoft.com/usage-guide/configuration_options/#wiki-configuration-file)
-- Defining a [`best_practices.md`](https://pr-insight-docs.khulnasoft.com/tools/improve/#best-practices) file
 - Track [accepted suggestions](https://pr-insight-docs.khulnasoft.com/tools/improve/#suggestion-tracking)
 - Facilitates learning over time by creating an [auto_best_practices.md](https://pr-insight-docs.khulnasoft.com/core-abilities/auto_best_practices) file
 
@@ -25,8 +24,8 @@ To enable a wiki for your repository:
 
 ### Why Wiki?
 
-- Your code (and its derivatives, including accepted code suggestions) is yours. Khulnasoft Merge will never store it on external servers.
-- Repository changes typically require pull requests, which create overhead and are time-consuming. This process is too cumbersome for auto data aggregation, and is not very convenient even for managing frequently updated content like configuration files and best practices.
+- Your code (and its derivatives, including accepted code suggestions) is yours. Pr Merge will never store it on external servers.
+- Repository changes typically require pull requests, which create overhead and are time-consuming. This process is too cumbersome for auto data aggregation, and is not very convenient even for managing frequently updated content like configuration files.
 - A repository wiki page provides an ideal balance:
     - It lives within your repository, making it suitable for code-related documentation
     - It enables quick updates without the overhead of pull requests

@@ -10,8 +10,8 @@ There are several ways to use self-hosted PR-Insight:
 - [BitBucket integration](./bitbucket.md)
 - [Azure DevOps integration](./azure.md)
 
-## Khulnasoft Merge 💎
-Khulnasoft Merge, an app hosted by KhulnaSoft for GitHub\GitLab\BitBucket, is also available.
+## Pr Merge 💎
+Pr Merge, an app hosted by KhulnaSoft for GitHub\GitLab\BitBucket, is also available.
 <br>
-With Khulnasoft Merge, installation is as simple as adding the Khulnasoft Merge app to your relevant repositories.
-See [here](https://pr-insight-docs.khulnasoft.com/installation/khulnasoft_merge/) for more details.
+With Pr Merge, installation is as simple as adding the Pr Merge app to your relevant repositories.
+See [here](https://pr-insight-docs.khulnasoft.com/installation/pr_merge/) for more details.

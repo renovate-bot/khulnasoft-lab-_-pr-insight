@@ -10,11 +10,11 @@ It can be invoked manually by commenting on any PR:
 
 If we wish to add detect changes to SQL queries in a given PR, we can add the following custom label along with its description:
 
-![Custom labels list](https://khulnasoft.com/images/pr_insight/custom_labels_list.png){width=768}
+![Custom labels list](https://khulnasoft/images/pr_insight/custom_labels_list.png){width=768}
 
 When running the `generate_labels` tool on a PR that includes changes in SQL queries, it will automatically suggest the custom label:
 
-![Custom labels published](https://khulnasoft.com/images/pr_insight/custom_label_published.png){width=768}
+![Custom labels published](https://khulnasoft/images/pr_insight/custom_label_published.png){width=768}
 
 Note that in addition to the dedicated tool `generate_labels`, the custom labels will also be used by the `describe` tool.
 
@@ -28,7 +28,7 @@ When working from CLI, you need to apply the [configuration changes](#configurat
 To enable custom labels, you need to apply the [configuration changes](#configuration-options) to the local `.pr_insight.toml` file in your repository.
 
 #### 3. Handle custom labels from the Repo's labels page 💎
-> This feature is available only in Khulnasoft Merge
+> This feature is available only in Pr Merge
 
 * GitHub : `https://github.com/{owner}/{repo}/labels`, or click on the "Labels" tab in the issues or PRs page.
 * GitLab : `https://gitlab.com/{owner}/{repo}/-/labels`, or click on "Manage" -> "Labels" on the left menu.
@@ -38,7 +38,7 @@ b. Add/edit the custom labels. It should be formatted as follows:
 * Description: Start the description of with prefix `pr_insight:`, for example: `pr_insight: Description of when AI should suggest this label`.<br>
 The description should be comprehensive and detailed, indicating when to add the desired label.
 
-![Add native custom labels](https://khulnasoft.com/images/pr_insight/add_native_custom_labels.png){width=880}
+![Add native custom labels](https://khulnasoft/images/pr_insight/add_native_custom_labels.png){width=880}
 
 c. Now the custom labels will be included in the `generate_labels` tool.
 

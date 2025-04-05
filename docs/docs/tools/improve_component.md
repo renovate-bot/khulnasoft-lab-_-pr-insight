@@ -12,15 +12,15 @@ To get a list of the components that changed in the PR and choose the relevant c
 
 Invoke the tool manually by commenting `/improve_component` on any PR:
 
-![improve_component1](https://khulnasoft.com/images/pr_insight/improve_component1.png){width=768}
+![improve_component1](https://khulnasoft/images/pr_insight/improve_component1.png){width=768}
 
 The tool will generate code suggestions for the selected component (if no component is stated, it will generate code suggestions for the largest component):
 
-![improve_component2](https://khulnasoft.com/images/pr_insight/improve_component2.png){width=768}
+![improve_component2](https://khulnasoft/images/pr_insight/improve_component2.png){width=768}
 
-**Notes**
-- Language that are currently supported by the tool: Python, Java, C++, JavaScript, TypeScript, C#.
-- This tool can also be triggered interactively by using the [`analyze`](./analyze.md) tool.
+!!! note "Notes"
+    - Language that are currently supported by the tool: Python, Java, C++, JavaScript, TypeScript, C#.
+    - This tool can also be triggered interactively by using the [`analyze`](./analyze.md) tool.
 
 ## Configuration options
 - `num_code_suggestions`: number of code suggestions to provide. Default is 4

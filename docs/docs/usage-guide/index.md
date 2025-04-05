@@ -1,7 +1,7 @@
 # Usage guide
 
-This page provides a detailed guide on how to use Khulnasoft Merge.
-It includes information on how to adjust Khulnasoft Merge configurations, define which tools will run automatically, and other advanced configurations.
+This page provides a detailed guide on how to use Pr Merge.
+It includes information on how to adjust Pr Merge configurations, define which tools will run automatically, and other advanced configurations.
 
 
 - [Introduction](./introduction.md)
@@ -23,5 +23,4 @@ It includes information on how to adjust Khulnasoft Merge configurations, define
     - [Working with large PRs](./additional_configurations.md#working-with-large-prs)
     - [Changing a model](./additional_configurations.md#changing-a-model)
     - [Patch Extra Lines](./additional_configurations.md#patch-extra-lines)
-    - [Editing the prompts](./additional_configurations.md#editing-the-prompts)
-- [Khulnasoft Merge Models](./PR_insight_pro_models.md)
+- [Pr Merge Models](./pr_merge_models)

@@ -1,5 +1,5 @@
 ## Run as a GitLab Pipeline
-You can use a pre-built Action Docker image to run PR-Insight as a GitLab pipeline. This is a simple way to get started with Khulnasoft Merge without setting up your own server.
+You can use a pre-built Action Docker image to run PR-Insight as a GitLab pipeline. This is a simple way to get started with Pr Merge without setting up your own server.
 
 (1) Add the following file to your repository under `.gitlab-ci.yml`:
 ```yaml
@@ -26,8 +26,8 @@ pr_insight_job:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 ```
-This script will run Khulnasoft Merge on every new merge request. You can modify the `rules` section to run Khulnasoft Merge on different events.
-You can also modify the `script` section to run different Khulnasoft Merge commands, or with different parameters by exporting different environment variables.
+This script will run Pr Merge on every new merge request. You can modify the `rules` section to run Pr Merge on different events.
+You can also modify the `script` section to run different Pr Merge commands, or with different parameters by exporting different environment variables.
 
 
 (2) Add the following masked variables to your GitLab repository (CI/CD -> Variables):
@@ -43,36 +43,46 @@ Note that if your base branches are not protected, don't set the variables as `p
 
 ## Run a GitLab webhook server
 
-1. From the GitLab workspace or group, create an access token with "Reporter" role ("Developer" if using Pro version of the agent) and "api" scope.
+1. In GitLab create a new user and give it "Reporter" role ("Developer" if using Pro version of the agent) for the intended group or project.
 
-2. Generate a random secret for your app, and save it for later. For example, you can use:
+2. For the user from step 1. generate a `personal_access_token` with `api` access.
 
-```
-WEBHOOK_SECRET=$(python -c "import secrets; print(secrets.token_hex(10))")
-```
-
-3. Clone this repository:
+3. Generate a random secret for your app, and save it for later (`shared_secret`). For example, you can use:
 
 ```
-git clone https://github.com/Khulnasoft/pr-insight.git
+SHARED_SECRET=$(python -c "import secrets; print(secrets.token_hex(10))")
 ```
 
-4. Prepare variables and secrets. Skip this step if you plan on settings these as environment variables when running the agent:
+4. Clone this repository:
+
+```
+git clone https://github.com/khulnasoft/pr-insight.git
+```
+
+5. Prepare variables and secrets. Skip this step if you plan on setting these as environment variables when running the agent:
   1. In the configuration file/variables:
-    - Set `deployment_type` to "gitlab"
+    - Set `config.git_provider` to "gitlab"
 
   2. In the secrets file/variables:
     - Set your AI model key in the respective section
-    - In the [gitlab] section, set `personal_access_token` (with token from step 1) and `shared_secret` (with secret from step 2)
+    - In the [gitlab] section, set `personal_access_token` (with token from step 2) and `shared_secret` (with secret from step 3)
 
-
-5. Build a Docker image for the app and optionally push it to a Docker repository. We'll use Dockerhub as an example:
+6. Build a Docker image for the app and optionally push it to a Docker repository. We'll use Dockerhub as an example:
 ```
 docker build . -t gitlab_pr_insight --target gitlab_webhook -f docker/Dockerfile
 docker push khulnasoft/pr-insight:gitlab_webhook  # Push to your Docker repository
 ```
 
-6. Create a webhook in GitLab. Set the URL to ```http[s]://<PR_INSIGHT_HOSTNAME>/webhook```, the secret token to the generated secret from step 2, and enable the triggers `push`, `comments` and `merge request events`.
+7. Set the environmental variables, the method depends on your docker runtime. Skip this step if you included your secrets/configuration directly in the Docker image.
 
-7. Test your installation by opening a merge request or commenting on a merge request using one of KhulnaSoft's commands.
-boxes
+```
+"CONFIG.GIT_PROVIDER": "gitlab"
+"GITLAB.PERSONAL_ACCESS_TOKEN": "<personal_access_token>"
+"GITLAB.SHARED_SECRET": "<shared_secret>"
+"GITLAB.URL": "https://gitlab.com"
+"OPENAI.KEY": "<your_openai_api_key>"
+```
+
+8. Create a webhook in your GitLab project. Set the URL to ```http[s]://<PR_INSIGHT_HOSTNAME>/webhook```, the secret token to the generated secret from step 3, and enable the triggers `push`, `comments` and `merge request events`.
+
+9. Test your installation by opening a merge request or commenting on a merge request using one of PR Insight's commands.

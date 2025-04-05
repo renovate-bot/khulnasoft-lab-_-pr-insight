@@ -1,6 +1,6 @@
 # Tools
 
-Here is a list of Khulnasoft Merge tools, each with a dedicated page that explains how to use it:
+Here is a list of Pr Merge tools, each with a dedicated page that explains how to use it:
 
 | Tool                                                                                     | Description                                                                                                                                |
 |------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
@@ -9,7 +9,6 @@ Here is a list of Khulnasoft Merge tools, each with a dedicated page that explai
 | **[Code Suggestions (`/improve`](./improve.md))**                                        | Code suggestions for improving the PR                                                                                                      |
 | **[Question Answering (`/ask ...`](./ask.md))**                                          | Answering free-text questions about the PR, or on specific code lines                                                                      |
 | **[Update Changelog (`/update_changelog`](./update_changelog.md))**                      | Automatically updating the CHANGELOG.md file with the PR changes                                                                           |
-| **[Find Similar Issue (`/similar_issue`](./similar_issues.md))**                         | Automatically retrieves and presents similar issues                                                                                        |
 | **[Help (`/help`](./help.md))**                                                          | Provides a list of all the available tools. Also enables to trigger them interactively (💎)                                                |
 | **💎 [Add Documentation (`/add_docs`](./documentation.md))**                             | Generates documentation to methods/functions/classes that changed in the PR                                                                |
 | **💎 [Generate Custom Labels (`/generate_labels`](./custom_labels.md))**                 | Generates custom labels for the PR, based on specific guidelines defined by the user                                                       |
@@ -20,4 +19,4 @@ Here is a list of Khulnasoft Merge tools, each with a dedicated page that explai
 | **💎 [Improve Component (`/improve_component component_name`](./improve_component.md))** | Generates code suggestions for a specific code component that changed in the PR                                                            |
 | **💎 [CI Feedback (`/checks ci_job`](./ci_feedback.md))**                                | Automatically generates feedback and analysis for a failed CI job                                                                          |
 | **💎 [Implement (`/implement`](./implement.md))**                                        | Generates implementation code from review suggestions                                                                                      |
-Note that the tools marked with 💎 are available only for Khulnasoft Merge users.
+Note that the tools marked with 💎 are available only for Pr Merge users.

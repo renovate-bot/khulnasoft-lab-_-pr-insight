@@ -9,6 +9,7 @@ class PRConfig:
     """
     The PRConfig class is responsible for listing all configuration options available for the user.
     """
+
     def __init__(self, pr_url: str, args=None, ai_handler=None):
         """
         Initialize the PRConfig object with the necessary attributes and objects to comment on a pull request.
@@ -20,11 +21,11 @@ class PRConfig:
         self.git_provider = get_git_provider()(pr_url)
 
     async def run(self):
-        get_logger().info('Getting configuration settings...')
-        get_logger().info('Preparing configs...')
+        get_logger().info("Getting configuration settings...")
+        get_logger().info("Preparing configs...")
         pr_comment = self._prepare_pr_configs()
         if get_settings().config.publish_output:
-            get_logger().info('Pushing configs...')
+            get_logger().info("Pushing configs...")
             self.git_provider.publish_comment(pr_comment)
             self.git_provider.remove_initial_comment()
         return ""
@@ -34,19 +35,45 @@ class PRConfig:
         conf_settings = Dynaconf(settings_files=[conf_file])
         configuration_headers = [header.lower() for header in conf_settings.keys()]
         relevant_configs = {
-            header: configs for header, configs in get_settings().to_dict().items()
-            if (header.lower().startswith("pr_") or header.lower().startswith("config")) and header.lower() in configuration_headers
+            header: configs
+            for header, configs in get_settings().to_dict().items()
+            if (header.lower().startswith("pr_") or header.lower().startswith("config"))
+            and header.lower() in configuration_headers
         }
 
-        skip_keys = ['ai_disclaimer', 'ai_disclaimer_title', 'ANALYTICS_FOLDER', 'secret_provider', "skip_keys", "app_id", "redirect",
-                     'trial_prefix_message', 'no_eligible_message', 'identity_provider', 'ALLOWED_REPOS',
-                     'APP_NAME', 'PERSONAL_ACCESS_TOKEN', 'shared_secret', 'key', 'AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'user_token',
-                     'private_key', 'private_key_id', 'client_id', 'client_secret', 'token', 'bearer_token']
-        extra_skip_keys = get_settings().config.get('config.skip_keys', [])
+        skip_keys = [
+            "ai_disclaimer",
+            "ai_disclaimer_title",
+            "ANALYTICS_FOLDER",
+            "secret_provider",
+            "skip_keys",
+            "app_id",
+            "redirect",
+            "trial_prefix_message",
+            "no_eligible_message",
+            "identity_provider",
+            "ALLOWED_REPOS",
+            "APP_NAME",
+            "PERSONAL_ACCESS_TOKEN",
+            "shared_secret",
+            "key",
+            "AWS_ACCESS_KEY_ID",
+            "AWS_SECRET_ACCESS_KEY",
+            "user_token",
+            "private_key",
+            "private_key_id",
+            "client_id",
+            "client_secret",
+            "token",
+            "bearer_token",
+            "jira_api_token",
+            "webhook_secret",
+        ]
+        partial_skip_keys = ["key", "secret", "token", "private"]
+        extra_skip_keys = get_settings().config.get("config.skip_keys", [])
         if extra_skip_keys:
             skip_keys.extend(extra_skip_keys)
         skip_keys_lower = [key.lower() for key in skip_keys]
-
 
         markdown_text = "<details> <summary><strong>🛠️ PR-Insight Configurations:</strong></summary> \n\n"
         markdown_text += f"\n\n```yaml\n\n"
@@ -57,7 +84,11 @@ class PRConfig:
             for key, value in configs.items():
                 if key.lower() in skip_keys_lower:
                     continue
-                markdown_text += f"\n{header.lower()}.{key.lower()} = {repr(value) if isinstance(value, str) else value}"
+                if any(skip_key in key.lower() for skip_key in partial_skip_keys):
+                    continue
+                markdown_text += (
+                    f"\n{header.lower()}.{key.lower()} = {repr(value) if isinstance(value, str) else value}"
+                )
                 markdown_text += "  "
         markdown_text += "\n```"
         markdown_text += "\n</details>\n"

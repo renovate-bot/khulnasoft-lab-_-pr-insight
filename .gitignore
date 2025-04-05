@@ -10,4 +10,9 @@ dist/
 build/
 .DS_Store
 docs/.cache/
-.khulnasoft
+.pr
+venv_*
+*.egg
+*.egg-info
+*.whl
+*.pyc

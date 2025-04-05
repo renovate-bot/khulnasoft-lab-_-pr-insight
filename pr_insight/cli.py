@@ -12,8 +12,9 @@ setup_logger(log_level)
 
 
 def set_parser():
-    parser = argparse.ArgumentParser(description='AI based pull request analyzer', usage=
-    """\
+    parser = argparse.ArgumentParser(
+        description="AI based pull request analyzer",
+        usage="""\
     Usage: cli.py --pr-url=<URL on supported git hosting service> <command> [<args>].
     For example:
     - cli.py --pr_url=... review
@@ -22,6 +23,7 @@ def set_parser():
     - cli.py --pr_url=... ask "write me a poem about this PR"
     - cli.py --pr_url=... reflect
     - cli.py --issue_url=... similar_issue
+    - cli.py --pr_url/--issue_url= help_docs [<asked question>]
 
     Supported commands:
     - review / review_pr - Add a review that includes a summary of the PR and specific suggestions for improvement.
@@ -41,16 +43,19 @@ def set_parser():
 
     - generate_labels
 
+    - help_docs - Ask a question, from either an issue or PR context, on a given repo (current context or a different one)
+
 
     Configuration:
     To edit any configuration parameter from 'configuration.toml', just add -config_path=<value>.
     For example: 'python cli.py --pr_url=... review --pr_reviewer.extra_instructions="focus on the file: ..."'
-    """)
-    parser.add_argument('--version', action='version', version=f'pr-insight {get_version()}')
-    parser.add_argument('--pr_url', type=str, help='The URL of the PR to review', default=None)
-    parser.add_argument('--issue_url', type=str, help='The URL of the Issue to review', default=None)
-    parser.add_argument('command', type=str, help='The', choices=commands, default='review')
-    parser.add_argument('rest', nargs=argparse.REMAINDER, default=[])
+    """,
+    )
+    parser.add_argument("--version", action="version", version=f"pr-insight {get_version()}")
+    parser.add_argument("--pr_url", type=str, help="The URL of the PR to review", default=None)
+    parser.add_argument("--issue_url", type=str, help="The URL of the Issue to review", default=None)
+    parser.add_argument("command", type=str, help="The", choices=commands, default="review")
+    parser.add_argument("rest", nargs=argparse.REMAINDER, default=[])
     return parser
 
 
@@ -92,5 +97,5 @@ def run(inargs=None, args=None):
         parser.print_help()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run()
